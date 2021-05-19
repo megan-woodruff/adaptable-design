@@ -1,0 +1,13 @@
+@import './styles.scss';
+
+.splash {
+  background-color: $primary;
+  color: $white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
