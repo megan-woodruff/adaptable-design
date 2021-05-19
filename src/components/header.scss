@@ -1,0 +1,12 @@
+@import './styles.scss';
+
+.header {
+  background-color: $primary;
+  color: $white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
