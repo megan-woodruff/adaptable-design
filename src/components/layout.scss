@@ -53,7 +53,7 @@ template {
   display: none;
 }
 a {
-  color: $white;
+  color: $black;
   font-family: $font-family-sans;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -86,7 +86,7 @@ h1 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: $font-family-sans;
-  font-weight: bold;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 3rem;
   line-height: 1.1;
@@ -575,7 +575,7 @@ code {
 
 footer {
   background-color: $primary;
-  color: $secondary;
+  color: $black;
   padding: 32px;
   display: flex;
   flex-direction: column;

@@ -5,40 +5,29 @@ import Seo from "../components/seo"
 import { useStaticQuery, graphql } from "gatsby"
 
 import '../components/adaptableImage.scss'
-import CuttingBoardSvg from "../components/cuttingBoardSvg"
 import AdaptableScene from "../components/adaptableScene"
-import PodStorageSvg from "../components/PodStorageSvg"
-
-const transitions = {
-  kitchen: {
-    cuttingBoard: 'kitchen_to_cutting_board',
-    storageShelf: 'kitchen_to_storage_shelf',
-    storageIsland: 'kitchen_to_storage_island',
-    stool: 'kitchen_to_stool'
-  },
-  cuttingBoard: {
-    kitchen: 'cutting_board_to_kitchen'
-  }
-}
 
 const adaptableScenes = {
   kitchen: {
     sceneId: 'kitchen',
     imageAlt: 'Alt text goes here',
-    imageName: 'kitchen_start',
+    imageName: 'kitchen',
     forwardButtons: [
       {
-        component: <CuttingBoardSvg />,
-        top: '37%',
-        left: '46%',
+        top: '46%',
+        left: '51%',
         to: 'cutting_board'
       },
       {
-        component: <PodStorageSvg />,
-        top: '43%',
-        left: '37%',
+        top: '56%',
+        left: '45%',
         to: 'pod_storage'
-      }
+      },
+      {
+        top: '16%',
+        left: '55%',
+        to: 'storage_shelf'
+      },
     ],
     back: null
   },
@@ -60,7 +49,15 @@ const adaptableScenes = {
     forwardButtons: [],
     principles: [],
     back: 'kitchen'
-  }
+  },
+  storage_shelf: {
+    sceneId: 'storage_shelf',
+    imageName: 'storage_shelf',
+    imageAlt: 'Close up on storage cabinet',
+    forwardButtons: [],
+    principles: [],
+    back: 'kitchen'
+  },
 
 }
 
@@ -102,7 +99,6 @@ const AdaptableFeatures = () => {
   return (
   <Layout>
     <Seo title="Adaptable Features" />
-    <h1>Kitchen</h1>
     <div className="home-tour">
     {scenes[0] && 
     <div className={`adaptable-scene ${sceneInFocus === 1 ? 'invisible' : 'visible'}`}>
@@ -119,7 +115,7 @@ const AdaptableFeatures = () => {
             let newScenes = scenes.slice()
             newScenes[0] = null
             setScenes(newScenes)
-          }, 1000)
+          }, 500)
         }}
         {...adaptableScenes[scenes[0]] } />
         </div>}
@@ -138,7 +134,7 @@ const AdaptableFeatures = () => {
               let newScenes = scenes.slice()
               newScenes[1] = null
               setScenes(newScenes)
-            }, 1000)
+            }, 500)
           }}
           {...adaptableScenes[scenes[1]] } />
     </div>}

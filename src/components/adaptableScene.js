@@ -38,17 +38,55 @@ const AdaptableScene = ({ assetData, sceneId, imageName, imageAlt, onTransitionC
       imgClassName="adaptable-image"
       image={imageObj}
       alt={imageAlt} />
+    {back && 
+      <BackButtonComponent 
+        back={back}
+        sceneId={sceneId} 
+        onTransitionStart={onTransitionStart}
+        onTransitionComplete={onTransitionComplete}
+        videoData={assetData.videos} />}
       
   </div>
 )
 
 }
 
+const BackButtonComponent = ({ videoData, sceneId, back, onTransitionComplete, onTransitionStart }) => {
+  const videoName = getTransitionVideoName({ sceneId, to: back })
+  const video = videoData.edges.filter(video => video.node.name === videoName)[0]
+  const videoRef = useRef(null)
+  const [zIndex, setZIndex] = useState(2)
+
+  return (
+    <>
+      <video 
+        ref={videoRef}
+        onEnded={() => { onTransitionComplete(back) }}
+        className="adaptable-video" 
+        style={{ 'zIndex': zIndex }}
+        muted>
+        <source 
+          src={video.node.publicURL} 
+          type="video/mp4" />
+      </video> 
+      <button 
+        className="backButton"
+        onClick={() => { 
+          onTransitionStart(back)
+          videoRef.current.play()
+          setZIndex(5)
+           }}>
+        Back
+      </button>
+    </>
+  )
+}
+
 const ForwardButtonComponent = ({ videoData, sceneId, component, to, top, left, onTransitionStart, onTransitionComplete }) => {
   const videoName = getTransitionVideoName({ sceneId, to })
   const video = videoData.edges.filter(video => video.node.name === videoName)[0]
   const videoRef = useRef(null)
-  const [zIndex, setZIndex] = useState(3)
+  const [zIndex, setZIndex] = useState(2)
 
     return (
       <>
@@ -67,8 +105,9 @@ const ForwardButtonComponent = ({ videoData, sceneId, component, to, top, left, 
           style={{ top: top, left: left, 'zIndex': 4 }}
           onClick={() => { 
             onTransitionStart(to)
+            videoRef.current.play()
             setZIndex(5)
-            videoRef.current.play() 
+            // setTimeout(() => , 0)
           }}>
           {component}
         </button>
