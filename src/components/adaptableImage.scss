@@ -1,19 +1,17 @@
 @import './styles.scss';
 
-$screenWidth: 1200px;
-$screenHeight: 675px;
+$screenWidth: 900px;
+$screenHeight: 506px;
 
 h1 {
   text-align: center;
-  margin: 16px auto;
+  margin: 24px auto;
 }
 
 .adaptable-container {
   position: relative;
   width: $screenWidth;
   height: $screenHeight;
-  margin: 12px auto 48px;
-  overflow: hidden;
 } 
 
 .adaptable-image {
@@ -33,4 +31,69 @@ h1 {
   top: 0;
   left: 0;
   z-index: 2;
+}
+
+.principles-flyout {
+  width: 300px;
+  background-color: $secondary;
+  color: $primary;
+  padding: 24px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  z-index: 4;
+  animation: appear 2s forwards;
+
+  @keyframes appear {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1
+    }
+  }
+}
+
+.svgButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  z-index: 3;
+  // width: 44%;
+
+  svg {
+    opacity: 0;
+    fill: $primary;
+    transition: opacity .3s linear;
+  }
+
+  &:hover {
+    svg { 
+      opacity: .6
+    }
+  }
+}
+
+.home-tour {
+  position: relative;
+  height: $screenHeight;
+  width: $screenWidth;
+  margin: 54px auto;
+  overflow: hidden;
+}
+
+.adaptable-scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity .5s linear;
+  
+  &.invisible {
+    opacity: .5;
+  }
+  
+  &.visible {
+    opacity: 1;
+  }
 }
