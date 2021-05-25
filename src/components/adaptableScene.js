@@ -75,9 +75,7 @@ const BackButtonComponent = ({ videoData, sceneId, back, onTransitionComplete, o
           onTransitionStart(back)
           videoRef.current.play()
           setZIndex(5)
-           }}>
-        Back
-      </button>
+        }}>X</button>
     </>
   )
 }

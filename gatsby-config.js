@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Adaptable Design`,
+    title: `adaptable design`,
     description: `UW HCDE + Adaptable House Project Final Deliverable`,
     author: `@megan-woodruff`,
   },

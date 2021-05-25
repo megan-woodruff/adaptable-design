@@ -12,3 +12,19 @@
   width: 100vw;
   text-align: center;
 }
+
+.start-tour {
+  margin-top: 16px;
+  text-decoration: none;
+  font-family: $font-family-sans;
+  font-size: 20px;
+  border: 1px solid $black;
+  padding: 16px 68px;
+  border-radius: 75px;
+  transition: all .25s ease;
+
+  &:hover {
+    background-color: $black;
+    color: $primary;
+  }
+}

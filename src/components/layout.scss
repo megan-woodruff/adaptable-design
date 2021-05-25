@@ -3,9 +3,10 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 16px $font-family-sans;
+  font: 16px $font-family-serif;
   box-sizing: border-box;
   overflow-y: scroll;
+  background-color: $primary;
 }
 body {
   margin: 0;
@@ -85,7 +86,7 @@ h1 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: $font-family-sans;
+  font-family: $font-family-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 3rem;
@@ -263,8 +264,8 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: $font-family-sans;
-  font-weight: bold;
+  font-family: $font-family-serif;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
   line-height: 1.1;
@@ -279,7 +280,7 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: $font-family-sans;
+  font-family: $font-family-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -295,7 +296,7 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: $font-family-sans;
+  font-family: $font-family-serif;
   font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
@@ -311,7 +312,7 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: $font-family-sans;
+  font-family: $font-family-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
@@ -327,8 +328,8 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-family: $font-family-sans;
-  font-weight: bold;
+  font-family: $font-family-serif;
+  font-weight: normal;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
@@ -396,7 +397,7 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  font-family: $font-family-sans;
+  font-family: $font-family-serif;
 }
 pre {
   margin-left: 0;

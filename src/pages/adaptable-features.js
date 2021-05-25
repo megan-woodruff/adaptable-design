@@ -16,7 +16,8 @@ const adaptableScenes = {
       {
         top: '46%',
         left: '51%',
-        to: 'cutting_board'
+        to: 'cutting_board',
+        quote: 'if I’m standing for more than 10 minutes, I’m starting to feel pain'
       },
       {
         top: '56%',
@@ -35,7 +36,7 @@ const adaptableScenes = {
     sceneId: 'cutting_board',
     imageName: 'cutting_board',
     imageAlt: 'Close up on cutting board',
-    forwardButtons: [],
+    features: [],
     principles: [{
       name: "Individuality",
       text: "The movable cutting board is designed to adapt to an individual’s needs while performing tasks in the kitchen, offering various orientations. It also serves as top cover for the trash feature."
@@ -99,6 +100,10 @@ const AdaptableFeatures = () => {
   return (
   <Layout>
     <Seo title="Adaptable Features" />
+    <div class="intro">
+    <h1>adaptable house tour</h1>
+    <p>explore adaptable kitchen and bathroom features developed as part of our work</p>
+    </div>
     <div className="home-tour">
     {scenes[0] && 
     <div className={`adaptable-scene ${sceneInFocus === 1 ? 'invisible' : 'visible'}`}>
@@ -115,7 +120,7 @@ const AdaptableFeatures = () => {
             let newScenes = scenes.slice()
             newScenes[0] = null
             setScenes(newScenes)
-          }, 500)
+          }, 250)
         }}
         {...adaptableScenes[scenes[0]] } />
         </div>}
@@ -134,7 +139,7 @@ const AdaptableFeatures = () => {
               let newScenes = scenes.slice()
               newScenes[1] = null
               setScenes(newScenes)
-            }, 500)
+            }, 250)
           }}
           {...adaptableScenes[scenes[1]] } />
     </div>}

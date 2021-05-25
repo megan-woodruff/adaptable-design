@@ -1,6 +1,6 @@
 @import './styles.scss';
 
-$screenWidth: 1100px;
+$screenWidth: 80vw;
 $screenHeight: $screenWidth * .56222;
 
 h1 {
@@ -84,19 +84,26 @@ h1 {
   position: relative;
   height: $screenHeight;
   width: $screenWidth;
-  margin: 54px auto;
+  margin: 24px auto;
 }
 
 .backButton {
-  background-color: $white;
-  padding: 12px 16px;
+  background-color: $black;
   border-radius: 4px;
   border: .5px solid $black;
-  color: $black;
+  color: $primary;
   font-family: $font-family-sans;
-  margin-top: 4px;
   transition: all .3s linear;
   cursor: pointer;
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  width: 4vw;
+  height: 4vw;
+  z-index: 5;
+  border-radius: 50%;
+  opacity: .8;
+  font-size: 16px;
 
   &:hover {
     transform: scale(1.05);
@@ -116,4 +123,12 @@ h1 {
   &.visible {
     opacity: 1;
   }
+}
+
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 24px;
 }

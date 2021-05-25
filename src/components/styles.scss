@@ -1,7 +1,51 @@
 $primary: #FFFAF2;
-$secondary: #FFF3DD;
 $white: #FFFFFF;
 $black: #000;
 
 $contrast: $black;
-$font-family-sans: 'Lora', serif;
+$font-family-serif: 'Lora', serif;
+$font-family-sans: 'DM Sans', sans-serif;
+
+.page-layout {
+  padding: 48px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 52px;
+}
+
+.text-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 16px;
+}
+
+.primary-point {
+  max-width: 640px;
+  margin: 32px auto;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 20px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+.mt-4 {
+  margin-top: 32px;
+}
+
+.mt-5 {
+  margin-top: 64px;
+}

@@ -17,8 +17,11 @@ const Splash = () => {
   return (
     <div className="splash">
       <h1>{data.site.siteMetadata.title}</h1>
-      <h3>A human-centered approach to designing inclusive home features</h3>
-      <Link to="/adaptable-features/">View Adaptable Features</Link> <br />
+      <h3>a human-centered approach to designing inclusive home features</h3>
+      <Link 
+        className="start-tour"
+        activeClassName="active"
+        to="/adaptable-features/">start home tour</Link> <br />
     </div>
   )
 }

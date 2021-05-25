@@ -71,7 +71,7 @@ function Seo({ description, lang, meta, title }) {
       ].concat(meta)}
     >
       <link rel="preconnect" href="https://fonts.gstatic.com"/>
-      <link href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap" rel="stylesheet"></link>
+      <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=DM+Sans&display=swap" rel="stylesheet"></link>
     </Helmet>
   )
 }
