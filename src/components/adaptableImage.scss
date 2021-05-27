@@ -1,17 +1,29 @@
 @import './styles.scss';
 
 $screenWidth: 80vw;
-$screenHeight: $screenWidth * .56222;
+$screenHeight: $screenWidth * .563;
 
 h1 {
   text-align: center;
   margin: 24px auto;
 }
 
+.header {
+  background-color: $black;
+  color: $primary;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
 .adaptable-container {
   position: relative;
   width: $screenWidth;
   height: $screenHeight;
+  overflow: hidden;
+  margin-bottom: 48px;
 } 
 
 .adaptable-image {
@@ -21,7 +33,7 @@ h1 {
   z-index: 3;
   width: $screenWidth;
   height: $screenHeight;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .adaptable-video {
@@ -90,18 +102,14 @@ h1 {
 .backButton {
   background-color: $black;
   border-radius: 4px;
-  border: .5px solid $black;
   color: $primary;
   font-family: $font-family-sans;
   transition: all .3s linear;
   cursor: pointer;
-  position: absolute;
-  top: 2vw;
-  right: 2vw;
-  width: 4vw;
-  height: 4vw;
+  padding: 16px 24px;
+  border: 1px solid $primary;
   z-index: 5;
-  border-radius: 50%;
+  border-radius: 75px;
   opacity: .8;
   font-size: 16px;
 
@@ -110,18 +118,32 @@ h1 {
   }
 }
 
+.quoteFooter {
+  position: absolute;
+  transition: all .5s ease;
+  bottom: -1px;
+  z-index: 6;
+  background-color: $black;
+  padding: 24px;
+  left: 0; 
+  right: 0;
+  color: $primary;
+  text-align: center;
+  font-size: 24px;
+  font-style: italic;
+}
+
 .adaptable-scene {
   position: absolute;
   top: 0;
   left: 0;
-  transition: opacity .5s linear;
   
   &.invisible {
-    opacity: .5;
+    z-index: -1;
   }
   
   &.visible {
-    opacity: 1;
+    z-index: 4;
   }
 }
 
@@ -131,4 +153,22 @@ h1 {
   flex-direction: column;
   text-align: center;
   margin: 24px;
+}
+
+
+.areaSelector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.areaButton {
+  width: 48%;
+  cursor: pointer;
+  padding: 24px;
+  font-size: 24px;
+  transition: all .5s ease;
 }

@@ -7,29 +7,40 @@ const getTransitionVideoName = ({ sceneId, to }) => {
   return `${sceneId}_to_${to}`
 }
 
-const AdaptableScene = ({ assetData, sceneId, imageName, imageAlt, onTransitionComplete, onTransitionStart, forwardButtons, principles, back }) => {
+const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTransitioning, onTransitionComplete, onTransitionStart, forwardButtons, principles, back }) => {
 
   const image = assetData.images.edges.filter(image => {
     return image.node.name === imageName
   })[0]
   const imageObj = getImage(image.node)
-  
+  const [backZIndex, setBackZIndex] = useState(2)
+  const backVideoRef = useRef(null)
+
   return (
+    <>
+    <div className="header">
+      {!isTransitioning &&
+        <>
+          <h3 style={{ marginBottom: 0 }}>{title}</h3>
+          {back && 
+            <button 
+            className="backButton"
+            onClick={() => { 
+              onTransitionStart(back)
+              backVideoRef.current.play()
+              setBackZIndex(5)
+            }}>{`<`}
+            <span style={{ marginLeft: 12 }}>back to {back}</span>
+            </button>}
+        </>}
+    </div>
   <div className="adaptable-container">
-    {/* {!!principles &&
-      <div className="principles-flyout">
-        {principles.map(principle => (
-          <div key={principle.name}>
-            <h3>{principle.name}</h3>
-            <p>{principle.text}</p>
-          </div>
-        ))}
-      </div>} */}
     {forwardButtons.map(forwardButton => 
       <ForwardButtonComponent 
         videoData={assetData.videos}
         key={forwardButton.to} 
         sceneId={sceneId} 
+        isTransitioning={isTransitioning}
         onTransitionStart={onTransitionStart}
         onTransitionComplete={onTransitionComplete}
         {...forwardButton} />
@@ -39,26 +50,24 @@ const AdaptableScene = ({ assetData, sceneId, imageName, imageAlt, onTransitionC
       image={imageObj}
       alt={imageAlt} />
     {back && 
-      <BackButtonComponent 
-        back={back}
-        sceneId={sceneId} 
-        onTransitionStart={onTransitionStart}
-        onTransitionComplete={onTransitionComplete}
-        videoData={assetData.videos} />}
-      
+    <BackButtonTransition
+      back={back}
+      sceneId={sceneId} 
+      videoRef={backVideoRef}
+      zIndex={backZIndex}
+      onTransitionComplete={onTransitionComplete}
+      videoData={assetData.videos} />}
   </div>
+  </>
 )
 
 }
 
-const BackButtonComponent = ({ videoData, sceneId, back, onTransitionComplete, onTransitionStart }) => {
+const BackButtonTransition = ({ videoData, videoRef, sceneId, back, onTransitionComplete, zIndex }) => {
   const videoName = getTransitionVideoName({ sceneId, to: back })
   const video = videoData.edges.filter(video => video.node.name === videoName)[0]
-  const videoRef = useRef(null)
-  const [zIndex, setZIndex] = useState(2)
 
   return (
-    <>
       <video 
         ref={videoRef}
         onEnded={() => { onTransitionComplete(back) }}
@@ -69,22 +78,15 @@ const BackButtonComponent = ({ videoData, sceneId, back, onTransitionComplete, o
           src={video.node.publicURL} 
           type="video/mp4" />
       </video> 
-      <button 
-        className="backButton"
-        onClick={() => { 
-          onTransitionStart(back)
-          videoRef.current.play()
-          setZIndex(5)
-        }}>X</button>
-    </>
   )
 }
 
-const ForwardButtonComponent = ({ videoData, sceneId, component, to, top, left, onTransitionStart, onTransitionComplete }) => {
+const ForwardButtonComponent = ({ videoData, sceneId, quote, isTransitioning, component, to, top, left, onTransitionStart, onTransitionComplete }) => {
   const videoName = getTransitionVideoName({ sceneId, to })
   const video = videoData.edges.filter(video => video.node.name === videoName)[0]
   const videoRef = useRef(null)
   const [zIndex, setZIndex] = useState(2)
+  const [isHovering, setIsHovering] = useState(false)
 
     return (
       <>
@@ -100,15 +102,22 @@ const ForwardButtonComponent = ({ videoData, sceneId, component, to, top, left, 
         </video> 
         <button 
           className="svgButton" 
+          onMouseLeave={() => { setIsHovering(false) }}
+          onMouseEnter={() => { setIsHovering(true) }}
           style={{ top: top, left: left, 'zIndex': 4 }}
           onClick={() => { 
             onTransitionStart(to)
             videoRef.current.play()
             setZIndex(5)
-            // setTimeout(() => , 0)
           }}>
           {component}
         </button>
+        {(quote && !isTransitioning) && 
+        <div 
+          className="quoteFooter" 
+          style={{ opacity: isHovering ? 1 : 0 }}>
+          "{quote}"
+        </div>}
       </>
     )
 }
