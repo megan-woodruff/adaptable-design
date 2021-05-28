@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 import { useStaticQuery, graphql } from "gatsby"
 
 import '../components/adaptableImage.scss'
@@ -13,6 +12,8 @@ const adaptableScenes = {
     title: 'Kitchen',
     imageAlt: 'Alt text goes here',
     imageName: 'kitchen',
+    features: [],
+    principles: [],
     forwardButtons: [
       {
         top: '46%',
@@ -41,17 +42,18 @@ const adaptableScenes = {
     features: [
       {
         description: 'A height-adjustable island and attached pull-out cutting board allows its user to sit, stand, and change positions while preparing food.',
-        video: 'cutting_board_positions'
+        videoName: 'cutting_board_positions'
       },
       {
-        description: '',
-        video: 'cutting_board_transfer'
+        description: 'This prep space will be connected to a small movable kitchen island, which can be used to transfer food or utensils to various parts of the kitchen without requiring lifting.',
+        videoName: 'cutting_board_transfer'
       }
     ],
     forwardButtons: [],
     principles: [{
-      name: "Individuality",
-      text: "The movable cutting board is designed to adapt to an individual’s needs while performing tasks in the kitchen, offering various orientations. It also serves as top cover for the trash feature."
+      title: "Individuality",
+      description: "The movable cutting board is designed to adapt to an individual’s needs while performing tasks in the kitchen, offering various orientations. It also serves as top cover for the trash feature.",
+      imageName: 'cutting_board'
     }],
     back: 'kitchen'
   },
@@ -59,7 +61,9 @@ const adaptableScenes = {
     sceneId: 'pod_storage',
     imageName: 'pod_storage',
     imageAlt: 'Close up on island with pod storage underneath',
+    title: 'Configurable storage pods',
     forwardButtons: [],
+    features: [],
     principles: [],
     back: 'kitchen'
   },
@@ -67,7 +71,9 @@ const adaptableScenes = {
     sceneId: 'storage_shelf',
     imageName: 'storage_shelf',
     imageAlt: 'Close up on storage cabinet',
+    title: 'Retractable overhead storage',
     forwardButtons: [],
+    features: [],
     principles: [],
     back: 'kitchen'
   },

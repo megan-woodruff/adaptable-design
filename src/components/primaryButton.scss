@@ -1,0 +1,33 @@
+@import './styles.scss';
+
+.primaryButton {
+  background-color: $black;
+  color: $primary;
+  font-family: $font-family-sans;
+  transition: all .3s linear;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid $primary;
+  z-index: 5;
+  border-radius: 75px;
+  font-size: 16px;
+  height: 44px;
+
+  &.disabled {
+    opacity: .4;
+    cursor: default;
+
+    &:hover {
+      transform: scale(1)
+    }
+  }
+
+  &.selected {
+    background-color: $primary;
+    color: $black;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

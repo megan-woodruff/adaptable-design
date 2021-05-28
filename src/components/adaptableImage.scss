@@ -99,6 +99,12 @@ h1 {
   margin: 24px auto;
 }
 
+.clickthroughNav {
+  display: flex;
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
 .backButton {
   background-color: $black;
   border-radius: 4px;
@@ -118,7 +124,7 @@ h1 {
   }
 }
 
-.quoteFooter {
+.footer {
   position: absolute;
   transition: all .5s ease;
   bottom: -1px;
@@ -127,6 +133,19 @@ h1 {
   padding: 24px;
   left: 0; 
   right: 0;
+  color: $primary;
+}
+
+.clickthroughFooter {
+  @extend .footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 12px 24px;
+}
+
+.quoteFooter {
+  @extend .footer;
   color: $primary;
   text-align: center;
   font-size: 24px;

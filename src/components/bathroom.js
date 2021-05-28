@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 
 import Layout from "./layout"
-import Seo from "./seo"
 import { useStaticQuery, graphql } from "gatsby"
 
 import '../components/adaptableImage.scss'

@@ -1,0 +1,21 @@
+@import './styles.scss';
+
+.secondaryButton {
+  background-color: $black;
+  color: $primary;
+  font-family: $font-family-sans;
+  transition: all .3s linear;
+  cursor: pointer;
+  padding: 8px 0;
+  border: none;
+  z-index: 5;
+  font-size: 16px;
+
+  &.selected {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

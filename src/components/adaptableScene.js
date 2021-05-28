@@ -1,13 +1,16 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import './adaptableImage.scss'
+import PrimaryButton from "./primaryButton"
+import SecondaryButton from './secondaryButton'
 
 const getTransitionVideoName = ({ sceneId, to }) => {
   return `${sceneId}_to_${to}`
 }
 
-const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTransitioning, onTransitionComplete, onTransitionStart, forwardButtons, principles, back }) => {
+const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTransitioning, 
+  onTransitionComplete, onTransitionStart, forwardButtons, features, principles, back }) => {
 
   const image = assetData.images.edges.filter(image => {
     return image.node.name === imageName
@@ -24,14 +27,14 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
           <h3 style={{ marginBottom: 0 }}>{title}</h3>
           {back && 
             <button 
-            className="backButton"
-            onClick={() => { 
-              onTransitionStart(back)
-              backVideoRef.current.play()
-              setBackZIndex(5)
-            }}>{`<`}
+              className="backButton"
+              onClick={() => { 
+                onTransitionStart(back)
+                backVideoRef.current.play()
+                setBackZIndex(5)
+              }}>{`<`}
             <span style={{ marginLeft: 12 }}>back to {back}</span>
-            </button>}
+          </button>}
         </>}
     </div>
   <div className="adaptable-container">
@@ -45,22 +48,108 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
         onTransitionComplete={onTransitionComplete}
         {...forwardButton} />
     )}
-    <GatsbyImage 
-      imgClassName="adaptable-image"
-      image={imageObj}
-      alt={imageAlt} />
+    {(features.length > 0 || principles.length > 0) ?
+      <ClickThroughs 
+        videoData={assetData.videos}
+        features={features} 
+        isTransitioning={isTransitioning}
+        principles={principles} /> : 
+      <GatsbyImage 
+        imgClassName="adaptable-image"
+        image={imageObj}
+        alt={imageAlt} /> }
     {back && 
-    <BackButtonTransition
-      back={back}
-      sceneId={sceneId} 
-      videoRef={backVideoRef}
-      zIndex={backZIndex}
-      onTransitionComplete={onTransitionComplete}
-      videoData={assetData.videos} />}
+      <BackButtonTransition
+        back={back}
+        sceneId={sceneId} 
+        videoRef={backVideoRef}
+        zIndex={backZIndex}
+        onTransitionComplete={onTransitionComplete}
+        videoData={assetData.videos} />}
   </div>
   </>
 )
 
+}
+
+const ClickThroughs = ({ features, principles, videoData, isTransitioning }) => {
+  const clickThroughs = [...features, ...principles]
+  const [clickThroughIndex, setClickThroughIndex] = useState(0)
+  const videoRef = useRef(null)
+
+  const currentClickThrough = clickThroughs[clickThroughIndex]
+  const currentVideo =  currentClickThrough.videoName ? videoData.edges.filter(video => video.node.name === currentClickThrough.videoName)[0] : null
+  const buttonStyle = { marginRight: 12 }
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      videoRef.current.play()
+    } 
+  }, [isTransitioning])
+
+  return (
+  <>
+    {currentVideo && 
+     <video
+      key={currentClickThrough.videoName} 
+      autoPlay={!isTransitioning}
+      loop
+      ref={videoRef}
+      className="adaptable-video" 
+      style={{ zIndex: 3 }}
+      muted>
+      <source 
+        key={currentClickThrough.videoName}
+        src={currentVideo.node.publicURL} 
+        type="video/mp4" />
+      </video> }
+    {!isTransitioning && <div className="clickthroughFooter">
+      
+      <div className="clickthroughContent">
+      <div className="clickthroughNav">
+        <SecondaryButton selected style={buttonStyle}>
+          feature
+        </SecondaryButton>
+        <SecondaryButton style={buttonStyle}>
+          design guidelines
+        </SecondaryButton>
+        <SecondaryButton style={buttonStyle}>
+          feedback
+        </SecondaryButton>
+      </div>
+        {currentClickThrough.title && <h5>
+          {currentClickThrough.title}
+        </h5>}
+        <p style={{ fontSize: 18, maxWidth: 800 }}>
+          {currentClickThrough.description}
+        </p>
+      </div>
+      
+      <div style={{ paddingBottom: 12 }}>
+        <div style={{ flexShrink: 0, display: 'flex', margin: 8 }}>
+        <PrimaryButton 
+          onClick={() => { 
+            setClickThroughIndex(clickThroughIndex - 1)
+          }} 
+          disabled={clickThroughIndex === 0}
+          selected 
+          style={{ height: 44, width: 48, marginRight: 8 }}>
+          {` < `}
+        </PrimaryButton>
+        <PrimaryButton 
+          onClick={() => { 
+            setClickThroughIndex(clickThroughIndex + 1)
+          }} 
+          selected 
+          style={{ height: 44, width: 48 }}>
+          {` > `}
+        </PrimaryButton>
+      </div>
+      
+      </div>
+    </div>}
+  </> 
+  )
 }
 
 const BackButtonTransition = ({ videoData, videoRef, sceneId, back, onTransitionComplete, zIndex }) => {
@@ -113,11 +202,11 @@ const ForwardButtonComponent = ({ videoData, sceneId, quote, isTransitioning, co
           {component}
         </button>
         {(quote && !isTransitioning) && 
-        <div 
-          className="quoteFooter" 
-          style={{ opacity: isHovering ? 1 : 0 }}>
-          "{quote}"
-        </div>}
+          <div 
+            className="quoteFooter" 
+            style={{ opacity: isHovering ? 1 : 0 }}>
+            "{quote}"
+          </div>}
       </>
     )
 }
