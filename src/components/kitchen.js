@@ -13,7 +13,7 @@ const adaptableScenes = {
     imageAlt: 'Alt text goes here',
     imageName: 'kitchen',
     features: [],
-    principles: [],
+    guidelines: [],
     forwardButtons: [
       {
         top: '46%',
@@ -45,14 +45,20 @@ const adaptableScenes = {
         videoName: 'cutting_board_positions'
       },
       {
-        description: 'This prep space will be connected to a small movable kitchen island, which can be used to transfer food or utensils to various parts of the kitchen without requiring lifting.',
+        description: 'This prep space is connected to a small movable kitchen island, which can be used to transfer food or utensils to various parts of the kitchen without requiring lifting.',
         videoName: 'cutting_board_transfer'
       }
     ],
     forwardButtons: [],
-    principles: [{
+    guidelines: [{
       title: "Individuality",
+      number: '1',
       description: "The movable cutting board is designed to adapt to an individual’s needs while performing tasks in the kitchen, offering various orientations. It also serves as top cover for the trash feature.",
+      imageName: 'cutting_board'
+    }, {
+      title: 'User Options',
+      number: '3',
+      description: 'This feature can be activated with voice or touch commands - tapping twice on the  counter triggers the top to extend for more comfortable use and added counter space.',
       imageName: 'cutting_board'
     }],
     back: 'kitchen'
@@ -64,7 +70,7 @@ const adaptableScenes = {
     title: 'Configurable storage pods',
     forwardButtons: [],
     features: [],
-    principles: [],
+    guidelines: [],
     back: 'kitchen'
   },
   storage_shelf: {
@@ -74,7 +80,7 @@ const adaptableScenes = {
     title: 'Retractable overhead storage',
     forwardButtons: [],
     features: [],
-    principles: [],
+    guidelines: [],
     back: 'kitchen'
   },
 

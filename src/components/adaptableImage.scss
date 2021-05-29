@@ -26,6 +26,39 @@ h1 {
   margin-bottom: 48px;
 } 
 
+.guidelineTooltipEntry {
+  background-color: $white;
+  color: $black;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+}
+
+.guidelineTooltip {
+  padding: 20px !important;
+  font-size: 16px !important;
+  max-width: 300px;
+  pointer-events: auto !important;
+
+  &:focus {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  &:hover {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+ }
+
 .adaptable-image {
   position: absolute;
   top: 0;
@@ -140,8 +173,9 @@ h1 {
   @extend .footer;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   padding: 12px 24px;
+  transition: all .5s ease;
 }
 
 .quoteFooter {

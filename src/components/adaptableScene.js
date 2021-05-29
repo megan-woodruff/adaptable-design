@@ -1,16 +1,20 @@
 import React, { useEffect, useRef, useState } from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
+import ReactTooltip from 'react-tooltip';
+
 import './adaptableImage.scss'
 import PrimaryButton from "./primaryButton"
 import SecondaryButton from './secondaryButton'
+import MoreSvg from './moreSvg'
+import { Link } from "gatsby";
 
 const getTransitionVideoName = ({ sceneId, to }) => {
   return `${sceneId}_to_${to}`
 }
 
 const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTransitioning, 
-  onTransitionComplete, onTransitionStart, forwardButtons, features, principles, back }) => {
+  onTransitionComplete, onTransitionStart, forwardButtons, features, guidelines, back }) => {
 
   const image = assetData.images.edges.filter(image => {
     return image.node.name === imageName
@@ -48,12 +52,12 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
         onTransitionComplete={onTransitionComplete}
         {...forwardButton} />
     )}
-    {(features.length > 0 || principles.length > 0) ?
+    {(features.length > 0 || guidelines.length > 0) ?
       <ClickThroughs 
         videoData={assetData.videos}
         features={features} 
         isTransitioning={isTransitioning}
-        principles={principles} /> : 
+        guidelines={guidelines} /> : 
       <GatsbyImage 
         imgClassName="adaptable-image"
         image={imageObj}
@@ -72,14 +76,17 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
 
 }
 
-const ClickThroughs = ({ features, principles, videoData, isTransitioning }) => {
-  const clickThroughs = [...features, ...principles]
+const ClickThroughs = ({ features, guidelines, videoData, isTransitioning }) => {
+  const clickThroughs = [...features, ...guidelines]
   const [clickThroughIndex, setClickThroughIndex] = useState(0)
   const videoRef = useRef(null)
 
   const currentClickThrough = clickThroughs[clickThroughIndex]
   const currentVideo =  currentClickThrough.videoName ? videoData.edges.filter(video => video.node.name === currentClickThrough.videoName)[0] : null
-  const buttonStyle = { marginRight: 12 }
+  const buttonStyle = { height: 36, paddingBottom: 0, paddingTop: 0, fontSize: 12, marginTop: 4, marginBottom: 4 }
+  const featuresStart = 0
+  const guidelinesStart = features.length
+  const feedbackStart = features.length + guidelines.length
 
   useEffect(() => {
     if (!isTransitioning) {
@@ -103,49 +110,79 @@ const ClickThroughs = ({ features, principles, videoData, isTransitioning }) => 
         src={currentVideo.node.publicURL} 
         type="video/mp4" />
       </video> }
-    {!isTransitioning && <div className="clickthroughFooter">
-      
-      <div className="clickthroughContent">
-      <div className="clickthroughNav">
-        <SecondaryButton selected style={buttonStyle}>
-          feature
-        </SecondaryButton>
-        <SecondaryButton style={buttonStyle}>
-          design guidelines
-        </SecondaryButton>
-        <SecondaryButton style={buttonStyle}>
-          feedback
-        </SecondaryButton>
-      </div>
-        {currentClickThrough.title && <h5>
-          {currentClickThrough.title}
-        </h5>}
-        <p style={{ fontSize: 18, maxWidth: 800 }}>
+    {!isTransitioning && 
+    <div className="clickthroughFooter">
+      <div className="clickthroughContent" style={{ fontSize: 18, maxWidth: 800, marginTop: 8 }}>
+        {currentClickThrough.title && 
+        <>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
+          <h3 style={{ marginBottom: 0, border: 'none', fontWeight: 400 }}>
+            {currentClickThrough.title}
+          </h3>
+          <a 
+            tabindex="0"
+            className="guidelineTooltipEntry"
+            data-tip
+            data-for='guideline'> 
+              i
+            </a>
+          <ReactTooltip 
+            clickable
+            delayHide={500}
+            id="guideline"
+            className='guidelineTooltip'
+            type="light"
+            effect='solid'>
+              <p style={{ fontWeight: 500, fontSize: 16 }}>Think about the individual rather than the collective</p>
+              <p style={{ fontSize: 14 }}>Do not assume one solution fits all - allow flexibility and adaptability in the functionality so that many users find comfort in the solution.</p>
+              <a 
+                style={{ fontSize: 14 }} 
+                // onFocus={}
+                tabIndex="0" 
+                href="http://localhost:8001/defining-adaptable-design" 
+                target="_blank">View all design guidelines</a>
+          </ReactTooltip>
+        </div>
+        <p style={{ marginBottom: 8, fontSize: 12 }}>Design Guideline</p>
+        </>}
+        <p>
           {currentClickThrough.description}
         </p>
+        <div style={{ flexShrink: 0, display: 'flex', marginBottom: 8, alignItems: 'center' }}>
+          <PrimaryButton 
+            tabIndex={-1}
+            onClick={() => {  setClickThroughIndex(clickThroughIndex - 1) }} 
+            disabled={clickThroughIndex === 0}
+            selected 
+            style={{ height: 44, width: 48 }}>
+            {` < `}
+          </PrimaryButton>
+          <p style={{ marginBottom: 0, marginLeft: 12, marginRight: 12 }}>{clickThroughIndex + 1} of {clickThroughs.length}</p>
+          <PrimaryButton 
+            onClick={() => { setClickThroughIndex(clickThroughIndex + 1)}} 
+            disabled={clickThroughIndex === clickThroughs.length - 1}
+            selected 
+            style={{ height: 44, width: 48 }}>
+            {` > `}
+          </PrimaryButton>
+        </div>
       </div>
-      
-      <div style={{ paddingBottom: 12 }}>
-        <div style={{ flexShrink: 0, display: 'flex', margin: 8 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'stretch', marginRight: 8 }}>
         <PrimaryButton 
-          onClick={() => { 
-            setClickThroughIndex(clickThroughIndex - 1)
-          }} 
-          disabled={clickThroughIndex === 0}
-          selected 
-          style={{ height: 44, width: 48, marginRight: 8 }}>
-          {` < `}
+          onClick={() => { setClickThroughIndex(featuresStart)}}
+          selected={clickThroughIndex < guidelinesStart}
+          style={buttonStyle}>
+          feature
         </PrimaryButton>
         <PrimaryButton 
-          onClick={() => { 
-            setClickThroughIndex(clickThroughIndex + 1)
-          }} 
-          selected 
-          style={{ height: 44, width: 48 }}>
-          {` > `}
+         onClick={() => { setClickThroughIndex(guidelinesStart)}}
+          selected={clickThroughIndex >= guidelinesStart}
+          style={buttonStyle}>
+          design guidelines
         </PrimaryButton>
-      </div>
-      
+        <PrimaryButton style={buttonStyle}>
+          user feedback
+        </PrimaryButton>
       </div>
     </div>}
   </> 
