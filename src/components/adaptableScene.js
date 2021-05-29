@@ -5,9 +5,6 @@ import ReactTooltip from 'react-tooltip';
 
 import './adaptableImage.scss'
 import PrimaryButton from "./primaryButton"
-import SecondaryButton from './secondaryButton'
-import MoreSvg from './moreSvg'
-import { Link } from "gatsby";
 
 const getTransitionVideoName = ({ sceneId, to }) => {
   return `${sceneId}_to_${to}`
