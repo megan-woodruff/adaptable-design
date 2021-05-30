@@ -52,14 +52,17 @@ const adaptableScenes = {
     forwardButtons: [],
     guidelines: [{
       title: "Individuality",
-      number: '1',
+      guidelineIndex: 1,
       description: "The movable cutting board is designed to adapt to an individual’s needs while performing tasks in the kitchen, offering various orientations. It also serves as top cover for the trash feature.",
       imageName: 'cutting_board'
     }, {
       title: 'User Options',
-      number: '3',
+      guidelineIndex: 3,
       description: 'This feature can be activated with voice or touch commands - tapping twice on the  counter triggers the top to extend for more comfortable use and added counter space.',
       imageName: 'cutting_board'
+    }],
+    feedback: [{
+      description: '"It is versatile - I like the options, it can be this or that depending on what your needs are." -Participant 1'
     }],
     back: 'kitchen'
   },

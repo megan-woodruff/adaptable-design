@@ -51,8 +51,8 @@ const AdaptableFeatures = () => {
   <Layout pageName={'home-tour'}>
     <Seo title="Adaptable Features" />
     <div className="intro">
-      <h1>adaptable house tour</h1>
-      <p>explore adaptable kitchen and bathroom features developed as part of our work</p>
+      <h1>adaptable home tour</h1>
+      <p>explore potential adaptable kitchen and bathroom features developed for the adaptable house project</p>
     </div>
     { areaSelected === null ?
       <div className="areaSelector">

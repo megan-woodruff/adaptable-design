@@ -1,5 +1,7 @@
 import * as React from "react"
 import Layout from "../components/layout"
+import '../components/designPrinciples.scss'
+import adaptableDesignGuidelines from "../components/adaptableDesignContent"
 
 const DefiningAdaptableDesign = () => (
   <Layout pageName={'defining-adaptable-design'}>
@@ -50,9 +52,42 @@ const DefiningAdaptableDesign = () => (
         Related to this idea, Adaptable Design is also centered on the conviction that a user’s abilities will enevitably change, sometimes gradually over a life time, and other times suddenly for a short period. Adaptable designs, rather than providing patchwork reactions to these changes, will have proactively considered how to accommodate them seamlessly.
         </p>
       </div>
-      <h1 className="title mt-5">
+      <h1 className="title mt-5" style={{ marginBottom: 20 }}>
         adaptable design principles
       </h1>
+      <table style={{ maxWidth: 800, margin: '0 auto' }}>
+        <tr className="designPrincipleRow">
+          <td className="designPrincipleName">Positive self-identity</td>
+          <td className="designPrincipleDescription">My home is a space where I can feel secure in my identity, nurture positive relationships with my family and community, and motivate myself to take on physical challenges and activities.</td>
+        </tr>
+        <tr className="designPrincipleRow">
+          <td className="designPrincipleName">Independence</td>
+          <td className="designPrincipleDescription">I am able to care for myself and engage in activities that are meaningful to me, even as my abilities change.</td>
+        </tr>
+        <tr className="designPrincipleRow">
+          <td className="designPrincipleName">Harmony with the home</td>
+          <td className="designPrincipleDescription">My home’s features reflect my design preferences and use space effectively.</td>
+        </tr>
+        <tr className="designPrincipleRow">
+          <td className="designPrincipleName">Safety and control</td>
+          <td className="designPrincipleDescription">I feel like I’m in control and, if things go wrong, that I’ll be able to quickly and gracefully recover to avoid injuring myself.</td>
+        </tr>
+        <tr className="designPrincipleRow">
+          <td className="designPrincipleName">Intuitive, flexible use</td>
+          <td className="designPrincipleDescription">The features in my home are easy to use, offer options for operation, and adapt to my functional needs over time.</td>
+        </tr>
+      </table>
+      <h1 className="title mt-5" style={{ marginBottom: 20 }}>
+        adaptable design guidelines
+      </h1>
+      <ol style={{ maxWidth: 600, margin: '0 auto' }}>
+        {adaptableDesignGuidelines.map(guideline => (
+          <li className="designGuideline">
+            <p style={{ fontWeight: 600 }}>{guideline.title}</p>
+            <p>{guideline.description}</p>
+          </li>
+        ))}
+      </ol>
     </div>
   </Layout>
 )

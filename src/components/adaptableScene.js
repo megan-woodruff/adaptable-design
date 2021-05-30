@@ -5,13 +5,14 @@ import ReactTooltip from 'react-tooltip';
 
 import './adaptableImage.scss'
 import PrimaryButton from "./primaryButton"
+import adaptableDesignGuidelines from "./adaptableDesignContent";
 
 const getTransitionVideoName = ({ sceneId, to }) => {
   return `${sceneId}_to_${to}`
 }
 
 const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTransitioning, 
-  onTransitionComplete, onTransitionStart, forwardButtons, features, guidelines, back }) => {
+  onTransitionComplete, onTransitionStart, forwardButtons, features, feedback = [], guidelines, back }) => {
 
   const image = assetData.images.edges.filter(image => {
     return image.node.name === imageName
@@ -53,6 +54,7 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
       <ClickThroughs 
         videoData={assetData.videos}
         features={features} 
+        feedback={feedback}
         isTransitioning={isTransitioning}
         guidelines={guidelines} /> : 
       <GatsbyImage 
@@ -73,8 +75,8 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
 
 }
 
-const ClickThroughs = ({ features, guidelines, videoData, isTransitioning }) => {
-  const clickThroughs = [...features, ...guidelines]
+const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransitioning }) => {
+  const clickThroughs = [...features, ...guidelines, ...feedback]
   const [clickThroughIndex, setClickThroughIndex] = useState(0)
   const videoRef = useRef(null)
 
@@ -84,6 +86,9 @@ const ClickThroughs = ({ features, guidelines, videoData, isTransitioning }) => 
   const featuresStart = 0
   const guidelinesStart = features.length
   const feedbackStart = features.length + guidelines.length
+  let fullGuideline = {}
+
+  if (currentClickThrough.guidelineIndex) fullGuideline = adaptableDesignGuidelines[currentClickThrough.guidelineIndex - 1]
 
   useEffect(() => {
     if (!isTransitioning) {
@@ -130,8 +135,8 @@ const ClickThroughs = ({ features, guidelines, videoData, isTransitioning }) => 
             className='guidelineTooltip'
             type="light"
             effect='solid'>
-              <p style={{ fontWeight: 500, fontSize: 16 }}>Think about the individual rather than the collective</p>
-              <p style={{ fontSize: 14 }}>Do not assume one solution fits all - allow flexibility and adaptability in the functionality so that many users find comfort in the solution.</p>
+              <p style={{ fontWeight: 500, fontSize: 16 }}>{fullGuideline.title }</p>
+              <p style={{ fontSize: 14 }}>{ fullGuideline.description }</p>
               <a 
                 style={{ fontSize: 14 }} 
                 // onFocus={}
@@ -164,7 +169,7 @@ const ClickThroughs = ({ features, guidelines, videoData, isTransitioning }) => 
           </PrimaryButton>
         </div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'stretch', marginRight: 8 }}>
+      <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', justifyContent: 'stretch', marginRight: 8 }}>
         <PrimaryButton 
           onClick={() => { setClickThroughIndex(featuresStart)}}
           selected={clickThroughIndex < guidelinesStart}
@@ -172,12 +177,15 @@ const ClickThroughs = ({ features, guidelines, videoData, isTransitioning }) => 
           feature
         </PrimaryButton>
         <PrimaryButton 
-         onClick={() => { setClickThroughIndex(guidelinesStart)}}
-          selected={clickThroughIndex >= guidelinesStart}
+          onClick={() => { setClickThroughIndex(guidelinesStart)}}
+          selected={clickThroughIndex >= guidelinesStart && clickThroughIndex < feedbackStart}
           style={buttonStyle}>
           design guidelines
         </PrimaryButton>
-        <PrimaryButton style={buttonStyle}>
+        <PrimaryButton 
+          onClick={() => { setClickThroughIndex(feedbackStart)}}
+          selected={clickThroughIndex >= feedbackStart}
+          style={buttonStyle}>
           user feedback
         </PrimaryButton>
       </div>

@@ -25,15 +25,20 @@ $font-family-sans: 'DM Sans', sans-serif;
   max-width: 600px;
   margin: 0 auto;
   text-align: left;
-  font-size: 16px;
+  font-size: 20px;
+  p {
+    font-size: 20px;
+  }
 }
 
 .primary-point {
   max-width: 640px;
   margin: 32px auto;
   text-align: left;
-  font-size: 20px;
-  font-weight: 600;
+  p {
+    font-size: 22px;
+    font-weight: 600;
+  }
 }
 
 .subtitle {
