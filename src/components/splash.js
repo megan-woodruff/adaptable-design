@@ -4,24 +4,14 @@ import "./splash.scss"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 const Splash = () => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <div className="splash">
-      <h1>{data.site.siteMetadata.title}</h1>
+      <h1>adaptable design</h1>
       <h3>a human-centered approach to designing inclusive home features</h3>
       <Link 
         className="start-tour"
         activeClassName="active"
-        to="/adaptable-features/">start home tour</Link> <br />
+        to="/home-tour">start home tour</Link> <br />
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 
-import Layout from "./layout"
 import { useStaticQuery, graphql } from "gatsby"
 
 import '../components/adaptableImage.scss'
@@ -97,7 +96,6 @@ const Bathroom = () => {
   `)
 
   return (
-  <Layout>
     <div className="home-tour">
     {scenes[0] && 
     <div className={`adaptable-scene ${sceneInFocus === 1 ? 'invisible' : 'visible'}`}>
@@ -138,7 +136,6 @@ const Bathroom = () => {
           {...adaptableScenes[scenes[1]] } />
     </div>}
     </div>
-  </Layout>
   )
 
 }

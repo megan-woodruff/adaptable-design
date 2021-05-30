@@ -48,7 +48,7 @@ const AdaptableFeatures = () => {
   })[0]
 
   return (
-  <Layout>
+  <Layout pageName={'home-tour'}>
     <Seo title="Adaptable Features" />
     <div className="intro">
       <h1>adaptable house tour</h1>

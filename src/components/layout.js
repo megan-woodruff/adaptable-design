@@ -7,34 +7,28 @@
 
 import * as React from "react"
 import PropTypes from "prop-types"
-// import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
-// import Header from "./header"
 import "./layout.scss"
+import NavBar from "./navBar"
 
-const Layout = ({ children }) => {
-  // const data = useStaticQuery(graphql`
-  //   query SiteTitleQuery {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //   }
-  // `)
+const Layout = ({ showNav = true, children, pageName }) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
 
   return (
     <>
-      {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
+      {showNav && 
+        <NavBar pageName={pageName} siteTitle={data.site.siteMetadata?.title || `Title`} />}
       <div>
-        <main>{children}</main>
-        {/* <footer
-        // style={{
-        //   marginTop: `2rem`,
-        // }}
-        >
-          © {new Date().getFullYear()}
-        </footer> */}
+        <main style={{ marginTop: showNav ? 100 : 0}}>{children}</main>
       </div>
     </>
   )

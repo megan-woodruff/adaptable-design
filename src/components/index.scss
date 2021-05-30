@@ -1,0 +1,77 @@
+@import './styles.scss';
+
+.stat {
+  width: 100%;
+  max-width: 480px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-header {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.indexSection {
+  padding: 64px 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.adaptableDesignPoints {
+  max-width: 800px;
+  margin-top: 32px;
+}
+
+.adaptableDesignList {
+  li {
+    font-size: 52px;
+    line-height: 20px;
+    padding: 20px 0;
+    list-style: decimal-leading-zero;
+    margin-left: 84px;
+  }
+
+  li span {
+      transform: translateY(-50%);
+      font-size: 20px;
+      line-height: 20px;
+  }
+}
+
+.primaryLinkIndex {
+  margin-top: 16px;
+  text-decoration: none;
+  font-family: $font-family-sans;
+  font-size: 20px;
+  border: 1px solid $black;
+  padding: 16px 68px;
+  border-radius: 75px;
+  transition: all .25s ease;
+
+  &:hover {
+    background-color: $black;
+    color: $primary;
+  }
+}
+
+.team-images {
+  display: flex;
+  justify-content: center;
+}
+
+.team-image {
+  border-radius: 50%;
+  height: 64px;
+  width: 64px;
+  object-fit: cover;
+  object-position: center;
+  margin: 12px;
+}

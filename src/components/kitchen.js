@@ -123,7 +123,6 @@ const Kitchen = () => {
   `)
 
   return (
-  <Layout>
     <div className="home-tour">
     {scenes[0] && 
       <div className={`adaptable-scene ${sceneInFocus === 1 ? 'invisible' : 'visible'}`}>
@@ -170,7 +169,6 @@ const Kitchen = () => {
             {...adaptableScenes[scenes[1]] } />
     </div>}
     </div>
-  </Layout>
   )
 
 }

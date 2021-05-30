@@ -1,13 +1,8 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
-import Splash from "../components/splash"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 
 const DefiningAdaptableDesign = () => (
-  <Layout>
+  <Layout pageName={'defining-adaptable-design'}>
     <div className="page-layout">
       <h1 className="title">what is adaptable design?</h1>
       <div className="text-wrapper">
@@ -55,7 +50,7 @@ const DefiningAdaptableDesign = () => (
         Related to this idea, Adaptable Design is also centered on the conviction that a user’s abilities will enevitably change, sometimes gradually over a life time, and other times suddenly for a short period. Adaptable designs, rather than providing patchwork reactions to these changes, will have proactively considered how to accommodate them seamlessly.
         </p>
       </div>
-      <h1 class="title mt-5">
+      <h1 className="title mt-5">
         adaptable design principles
       </h1>
     </div>
