@@ -18,7 +18,7 @@
 }
 
 .indexSection {
-  padding: 64px 0;
+  padding: 64px 0 84px;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -55,6 +55,7 @@
   padding: 16px 68px;
   border-radius: 75px;
   transition: all .25s ease;
+  cursor: pointer;
 
   &:hover {
     background-color: $black;

@@ -17,6 +17,39 @@
 }
 
 .designGuideline {
-  margin-bottom: 24px;
-  
+  font-size: 52px;
+  line-height: 24px;
+  padding: 20px 0;
+  list-style: decimal-leading-zero;
+  margin-left: 84px;
+
+  .title {
+    transform: translateY(-12px);
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .description {
+    transform: translateY(-12px);
+    margin-bottom: 0;
+  }
+}
+
+.designGuidelinePrincipleTag {
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 1px solid $black;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  border-radius: 20px;
+}
+
+.principleTags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+}
+
+.home-tour-link {
+  font-family: $font-family-serif;
 }

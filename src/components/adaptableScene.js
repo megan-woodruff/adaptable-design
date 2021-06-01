@@ -27,6 +27,7 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
       {!isTransitioning &&
         <>
           <h3 style={{ marginBottom: 0 }}>{title}</h3>
+          {/* {forwardButtons.length > 0 && <p style={{ fontStyle: 'italic', marginBottom: 0 }}>Hover over a feature to learn about its inspiration. Click to see its attributes and relevant design guidelines</p>} */}
           {back && 
             <button 
               className="backButton"
@@ -87,12 +88,14 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransition
   const guidelinesStart = features.length
   const feedbackStart = features.length + guidelines.length
   let fullGuideline = {}
+  let playbackRate = 1
 
   if (currentClickThrough.guidelineIndex) fullGuideline = adaptableDesignGuidelines[currentClickThrough.guidelineIndex - 1]
+  if (currentClickThrough.playbackRate) playbackRate = currentClickThrough.playbackRate
 
   useEffect(() => {
     if (!isTransitioning) {
-      videoRef.current.play()
+      if (videoRef.current) videoRef.current.play()
     } 
   }, [isTransitioning])
 
@@ -103,6 +106,7 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransition
       key={currentClickThrough.videoName} 
       autoPlay={!isTransitioning}
       loop
+      playbackRate={playbackRate}
       ref={videoRef}
       className="adaptable-video" 
       style={{ zIndex: 3 }}
@@ -114,15 +118,14 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransition
       </video> }
     {!isTransitioning && 
     <div className="clickthroughFooter">
-      <div className="clickthroughContent" style={{ fontSize: 18, maxWidth: 800, marginTop: 8 }}>
+      <div className="clickthroughContent" style={{ fontSize: 18, maxWidth: 1000, marginTop: 8 }}>
         {currentClickThrough.title && 
-        <>
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 4 }}>
           <h3 style={{ marginBottom: 0, border: 'none', fontWeight: 400 }}>
             {currentClickThrough.title}
           </h3>
           <a 
-            tabindex="0"
+            tabIndex="0"
             className="guidelineTooltipEntry"
             data-tip
             data-for='guideline'> 
@@ -144,13 +147,17 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransition
                 href="http://localhost:8001/defining-adaptable-design" 
                 target="_blank">View all design guidelines</a>
           </ReactTooltip>
-        </div>
-        <p style={{ marginBottom: 8, fontSize: 12 }}>Design Guideline</p>
-        </>}
-        <p>
+        </div>}
+        {clickThroughIndex >= guidelinesStart &&
+        <p style={{ marginBottom: 8, fontSize: 14 }}>
+          {clickThroughIndex >= guidelinesStart && clickThroughIndex < feedbackStart ? 
+            'Design Guideline' : 'Participant Design Feedback'}
+        </p>}
+        <p style={{ fontSize: 20, marginBottom: 12, fontStyle: clickThroughIndex >= feedbackStart ? 'italic' : 'unset' }}>
           {currentClickThrough.description}
         </p>
-        <div style={{ flexShrink: 0, display: 'flex', marginBottom: 8, alignItems: 'center' }}>
+      </div>
+      <div style={{ flexShrink: 0, display: 'flex', marginRight: 8, marginTop: 8, alignItems: 'center' }}>
           <PrimaryButton 
             tabIndex={-1}
             onClick={() => {  setClickThroughIndex(clickThroughIndex - 1) }} 
@@ -167,27 +174,6 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransition
             style={{ height: 44, width: 48 }}>
             {` > `}
           </PrimaryButton>
-        </div>
-      </div>
-      <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', justifyContent: 'stretch', marginRight: 8 }}>
-        <PrimaryButton 
-          onClick={() => { setClickThroughIndex(featuresStart)}}
-          selected={clickThroughIndex < guidelinesStart}
-          style={buttonStyle}>
-          feature
-        </PrimaryButton>
-        <PrimaryButton 
-          onClick={() => { setClickThroughIndex(guidelinesStart)}}
-          selected={clickThroughIndex >= guidelinesStart && clickThroughIndex < feedbackStart}
-          style={buttonStyle}>
-          design guidelines
-        </PrimaryButton>
-        <PrimaryButton 
-          onClick={() => { setClickThroughIndex(feedbackStart)}}
-          selected={clickThroughIndex >= feedbackStart}
-          style={buttonStyle}>
-          user feedback
-        </PrimaryButton>
       </div>
     </div>}
   </> 

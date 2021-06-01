@@ -2,6 +2,7 @@ import * as React from "react"
 import Layout from "../components/layout"
 import '../components/designPrinciples.scss'
 import adaptableDesignGuidelines from "../components/adaptableDesignContent"
+import { Link } from "gatsby"
 
 const DefiningAdaptableDesign = () => (
   <Layout pageName={'defining-adaptable-design'}>
@@ -52,9 +53,15 @@ const DefiningAdaptableDesign = () => (
         Related to this idea, Adaptable Design is also centered on the conviction that a user’s abilities will enevitably change, sometimes gradually over a life time, and other times suddenly for a short period. Adaptable designs, rather than providing patchwork reactions to these changes, will have proactively considered how to accommodate them seamlessly.
         </p>
       </div>
-      <h1 className="title mt-5" style={{ marginBottom: 20 }}>
+      <h1 className="title mt-5" style={{ marginBottom: 20, marginTop: 100 }}>
         adaptable design principles
       </h1>
+      <div className="text-wrapper subtitle" style={{ marginBottom: 20, textAlign: 'center' }}>
+        <p className="subtitle">
+          Working from this definition, we developed a set of design principles that are central to creating an adaptable design
+        </p>
+        
+      </div>
       <table style={{ maxWidth: 800, margin: '0 auto' }}>
         <tr className="designPrincipleRow">
           <td className="designPrincipleName">Positive self-identity</td>
@@ -77,17 +84,29 @@ const DefiningAdaptableDesign = () => (
           <td className="designPrincipleDescription">The features in my home are easy to use, offer options for operation, and adapt to my functional needs over time.</td>
         </tr>
       </table>
-      <h1 className="title mt-5" style={{ marginBottom: 20 }}>
+      <h1 className="title mt-5" style={{ marginTop: 100, marginBottom: 20 }}>
         adaptable design guidelines
       </h1>
-      <ol style={{ maxWidth: 600, margin: '0 auto' }}>
+      <div className="text-wrapper subtitle" style={{ marginBottom: 20, textAlign: 'center' }}>
+        <p className="subtitle">
+          We also developed a set of design guidelines for applying these principles to the design of home features.
+        </p>
+        
+      </div>
+      <ol style={{ maxWidth: 600, margin: '64px auto 64px' }}>
         {adaptableDesignGuidelines.map(guideline => (
           <li className="designGuideline">
-            <p style={{ fontWeight: 600 }}>{guideline.title}</p>
-            <p>{guideline.description}</p>
+            <p className="title" style={{ fontWeight: 600 }}>{guideline.title}</p>
+            <p className="description">{guideline.description}</p>
+            <span className="principleTags">{guideline.principles.map(principle => <span className="designGuidelinePrincipleTag">{principle}</span>)}</span>
           </li>
         ))}
       </ol>
+      <div className="text-wrapper subtitle" style={{ textAlign: 'center'}}>
+        <p style={{ fontSize: 24 }}>
+          To see these guidelines in action, check out the <Link className="home-tour-link" to="/home-tour">home tour</Link>.
+        </p>
+      </div>
     </div>
   </Layout>
 )

@@ -36,9 +36,9 @@ h1 {
   align-items: center;
   border-radius: 50%;
   border: none;
-  font-size: 12px;
-  width: 20px;
-  height: 20px;
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
   margin-left: 12px;
 }
 
@@ -106,10 +106,10 @@ h1 {
   position: absolute;
   z-index: 3;
   border-radius: 50%;
-  width: $screenWidth * .04;
-  height: $screenWidth * .04;
+  width: $screenWidth * .03;
+  height: $screenWidth * .03;
   background-color: $contrast;
-  opacity: .5;
+  opacity: .7;
 
   transition: all .3s linear;
 
@@ -149,7 +149,6 @@ h1 {
   border: 1px solid $primary;
   z-index: 5;
   border-radius: 75px;
-  opacity: .8;
   font-size: 16px;
 
   &:hover {
