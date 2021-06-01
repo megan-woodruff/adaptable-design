@@ -20,11 +20,6 @@ const adaptableScenes = {
         to: 'cutting_board',
         quote: 'I wish I had a huge island that had at least one, if not two, prep spaces that I could roll around or move around'
       },
-      // {
-      //   top: '56%',
-      //   left: '40%',
-      //   to: 'pod_storage'
-      // },
       {
         top: '16%',
         left: '55%',
@@ -66,7 +61,7 @@ const adaptableScenes = {
       title: "Individuality",
       guidelineIndex: 1,
       description: "This feature is designed to adapt to an individual’s needs while performing tasks in the kitchen, offering various orientations.",
-      videoName: 'cutting_board_individuality'
+      videoName: 'cutting_board_positions',
     }, {
       title: 'User Options',
       guidelineIndex: 3,
@@ -77,7 +72,7 @@ const adaptableScenes = {
     {
       title: 'Form + Function',
       guidelineIndex: 4,
-      description: 'The movable cutting board is designed to seamlessly fit into the space and act as an invisible-until-needed part of the kitchen.',
+      description: 'The movable island is designed to seamlessly fit into the space and act as an invisible-until-needed part of the kitchen.',
       videoName: 'cutting_board_formfunction'
     },
     {
@@ -99,7 +94,7 @@ const adaptableScenes = {
     title: 'Minimal-Lift Trash Bins',
     features: [
       {
-        description: 'Trash bins are located within the movable cutting board in order to elegantly minimize the moving, bending and lifting usually required to throw items away and take out the trash',
+        description: 'Trash bins are located within the movable island in order to elegantly minimize the moving, bending and lifting usually required to throw items away and take out the trash',
         videoName: 'trash'
       },
     ],
@@ -213,6 +208,7 @@ const Kitchen = () => {
         edges {
           node {
             name,
+            publicURL,
             childImageSharp {
               gatsbyImageData(
                 width: 2000

@@ -54,6 +54,7 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
     {(features.length > 0 || guidelines.length > 0) ?
       <ClickThroughs 
         videoData={assetData.videos}
+        imageData={assetData.images}
         features={features} 
         feedback={feedback}
         isTransitioning={isTransitioning}
@@ -76,7 +77,7 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
 
 }
 
-const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransitioning }) => {
+const ClickThroughs = ({ features, guidelines, feedback, videoData, imageData, isTransitioning }) => {
   const clickThroughs = [...features, ...guidelines, ...feedback]
   const [clickThroughIndex, setClickThroughIndex] = useState(0)
   const videoRef = useRef(null)
@@ -87,6 +88,7 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransition
   const featuresStart = 0
   const guidelinesStart = features.length
   const feedbackStart = features.length + guidelines.length
+  
   let fullGuideline = {}
   let playbackRate = 1
 
@@ -153,11 +155,11 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, isTransition
           {clickThroughIndex >= guidelinesStart && clickThroughIndex < feedbackStart ? 
             'Design Guideline' : 'Participant Design Feedback'}
         </p>}
-        <p style={{ fontSize: 20, marginBottom: 12, fontStyle: clickThroughIndex >= feedbackStart ? 'italic' : 'unset' }}>
+        <p style={{ fontSize: 18, marginBottom: 12, fontStyle: clickThroughIndex >= feedbackStart ? 'italic' : 'unset' }}>
           {currentClickThrough.description}
         </p>
       </div>
-      <div style={{ flexShrink: 0, display: 'flex', marginRight: 8, marginTop: 8, alignItems: 'center' }}>
+      <div style={{ flexShrink: 0, display: 'flex', marginLeft: 20, marginRight: 8, marginTop: 8, marginBottom: 8, alignItems: 'center' }}>
           <PrimaryButton 
             tabIndex={-1}
             onClick={() => {  setClickThroughIndex(clickThroughIndex - 1) }} 
