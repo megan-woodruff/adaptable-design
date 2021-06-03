@@ -12,7 +12,7 @@ const getTransitionVideoName = ({ sceneId, to }) => {
 }
 
 const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTransitioning, 
-  onTransitionComplete, onTransitionStart, forwardButtons, features, feedback = [], guidelines, back }) => {
+  onBackToOverview, onTransitionComplete, onTransitionStart, forwardButtons, features, feedback = [], guidelines, back }) => {
 
   const image = assetData.images.edges.filter(image => {
     return image.node.name === imageName
@@ -20,6 +20,11 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
   const imageObj = getImage(image.node)
   const [backZIndex, setBackZIndex] = useState(2)
   const backVideoRef = useRef(null)
+  const onClickBack = () => { 
+    onTransitionStart(back)
+    backVideoRef.current.play()
+    setBackZIndex(5)
+   }
 
   return (
     <>
@@ -28,15 +33,17 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
         <>
           <h3 style={{ marginBottom: 0 }}>{title}</h3>
           {/* {forwardButtons.length > 0 && <p style={{ fontStyle: 'italic', marginBottom: 0 }}>Hover over a feature to learn about its inspiration. Click to see its attributes and relevant design guidelines</p>} */}
-          {back && 
+          {back ? 
             <button 
+              aria-label="back to kitchen"
               className="backButton"
-              onClick={() => { 
-                onTransitionStart(back)
-                backVideoRef.current.play()
-                setBackZIndex(5)
-              }}>{`<`}
-            <span style={{ marginLeft: 12 }}>back to {back}</span>
+              onClick={onClickBack}>{`<`}
+              <span style={{ marginLeft: 12 }}>back to {back}</span>
+            </button> :
+            <button 
+            className="backButton"
+            onClick={onBackToOverview}>{`<`}
+            <span style={{ marginLeft: 12 }}>back to overview</span>
           </button>}
         </>}
     </div>
@@ -53,6 +60,8 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
     )}
     {(features.length > 0 || guidelines.length > 0) ?
       <ClickThroughs 
+        onClickBack={onClickBack}
+        back={back}
         videoData={assetData.videos}
         imageData={assetData.images}
         features={features} 
@@ -77,10 +86,11 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
 
 }
 
-const ClickThroughs = ({ features, guidelines, feedback, videoData, imageData, isTransitioning }) => {
+const ClickThroughs = ({ back, onClickBack, features, guidelines, feedback, videoData, isTransitioning }) => {
   const clickThroughs = [...features, ...guidelines, ...feedback]
   const [clickThroughIndex, setClickThroughIndex] = useState(0)
   const videoRef = useRef(null)
+  const sourceRef = useRef(null)
 
   const currentClickThrough = clickThroughs[clickThroughIndex]
   const currentVideo =  currentClickThrough.videoName ? videoData.edges.filter(video => video.node.name === currentClickThrough.videoName)[0] : null
@@ -90,10 +100,14 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, imageData, i
   const feedbackStart = features.length + guidelines.length
   
   let fullGuideline = {}
-  let playbackRate = 1
+  let playbackRate = currentClickThrough.playbackRate || 1
 
   if (currentClickThrough.guidelineIndex) fullGuideline = adaptableDesignGuidelines[currentClickThrough.guidelineIndex - 1]
   if (currentClickThrough.playbackRate) playbackRate = currentClickThrough.playbackRate
+
+  const setPlayBack = () => {
+    if (videoRef.current) videoRef.current.playbackRate = playbackRate
+  }
 
   useEffect(() => {
     if (!isTransitioning) {
@@ -108,7 +122,7 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, imageData, i
       key={currentClickThrough.videoName} 
       autoPlay={!isTransitioning}
       loop
-      playbackRate={playbackRate}
+      onCanPlay={() => setPlayBack()}
       ref={videoRef}
       className="adaptable-video" 
       style={{ zIndex: 3 }}
@@ -116,15 +130,17 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, imageData, i
       <source 
         key={currentClickThrough.videoName}
         src={currentVideo.node.publicURL} 
+        // ref={sourceRef}
+        // playbackRate={playbackRate}
         type="video/mp4" />
       </video> }
     {!isTransitioning && 
     <div className="clickthroughFooter">
       <div className="clickthroughContent" style={{ fontSize: 18, maxWidth: 1000, marginTop: 8 }}>
-        {currentClickThrough.title && 
+        {currentClickThrough.guidelineIndex && 
         <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 4 }}>
           <h3 style={{ marginBottom: 0, border: 'none', fontWeight: 400 }}>
-            {currentClickThrough.title}
+            {fullGuideline.title}
           </h3>
           <a 
             tabIndex="0"
@@ -159,7 +175,8 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, imageData, i
           {currentClickThrough.description}
         </p>
       </div>
-      <div style={{ flexShrink: 0, display: 'flex', marginLeft: 20, marginRight: 8, marginTop: 8, marginBottom: 8, alignItems: 'center' }}>
+      <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+      <div style={{  display: 'flex', marginLeft: 20, marginRight: 8, marginTop: 8, marginBottom: 8, alignItems: 'center' }}>
           <PrimaryButton 
             tabIndex={-1}
             onClick={() => {  setClickThroughIndex(clickThroughIndex - 1) }} 
@@ -176,6 +193,9 @@ const ClickThroughs = ({ features, guidelines, feedback, videoData, imageData, i
             style={{ height: 44, width: 48 }}>
             {` > `}
           </PrimaryButton>
+      </div>
+        {/* {clickThroughIndex == clickThroughs.length - 1 && 
+          <button className="smallBackButton" onClick={onClickBack} style={{ marginTop: 4 }}>{`Back to ${back}`}</button>} */}
       </div>
     </div>}
   </> 

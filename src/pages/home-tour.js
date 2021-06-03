@@ -67,7 +67,7 @@ const AdaptableFeatures = () => {
         </button>
       </div> : 
         areaSelected === 'kitchen' ? 
-          <Kitchen />  : 
+          <Kitchen onBackToOverview={() => { setAreaSelected(null) }} />  : 
           <Bathroom />}
     
   </Layout>

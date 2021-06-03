@@ -21,8 +21,8 @@ const adaptableScenes = {
         quote: 'I wish I had a huge island that had at least one, if not two, prep spaces that I could roll around or move around'
       },
       {
-        top: '16%',
-        left: '55%',
+        top: '20%',
+        left: '49.5%',
         to: 'storage_shelf', 
         quote: 'Right now, my storage is all overhead, but if I was in a wheelchair that wouldn\'t work.'
       },
@@ -53,7 +53,8 @@ const adaptableScenes = {
       },
       {
         description: 'This prep space is connected to a small movable kitchen island, which can be used to transfer food or utensils to various parts of the kitchen without requiring lifting.',
-        videoName: 'cutting_board_transfer'
+        videoName: 'cutting_board_transfer',
+        playbackRate: 2
       }
     ],
     forwardButtons: [],
@@ -67,7 +68,7 @@ const adaptableScenes = {
       guidelineIndex: 3,
       description: 'This feature can be activated with voice or touch commands - tapping twice on the  counter triggers the top to extend for more comfortable use and added counter space. The same can be triggered by a voice command or by pulling.',
       videoName: 'cutting_board_options',
-      playbackRate: 5
+      playbackRate: 2
     },
     {
       title: 'Form + Function',
@@ -82,9 +83,11 @@ const adaptableScenes = {
       videoName: 'cutting_board_multipurpose',
       playbackRate: 2
     }],
-    feedback: [{
-      description: '"It is versatile - I like the options, it can be this or that depending on what your needs are." -Participant 1'
-    }],
+    feedback: [
+    //   {
+    //   description: '"It is versatile - I like the options, it can be this or that depending on what your needs are." -Participant 1'
+    // }
+  ],
     back: 'kitchen'
   },
   trash: {
@@ -122,24 +125,41 @@ const adaptableScenes = {
     feedback: [],
     back: 'kitchen'
   },
-  pod_storage: {
-    sceneId: 'pod_storage',
-    imageName: 'pod_storage',
-    imageAlt: 'Close up on island with pod storage underneath',
-    title: 'Configurable storage pods',
-    forwardButtons: [],
-    features: [],
-    guidelines: [],
-    back: 'kitchen'
-  },
   storage_shelf: {
     sceneId: 'storage_shelf',
     imageName: 'storage_shelf',
     imageAlt: 'Close up on storage cabinet',
-    title: 'Retractable overhead storage',
+    title: 'Retractable Overhead Storage',
     forwardButtons: [],
-    features: [],
-    guidelines: [],
+    features: [{
+      description: 'Retractable cabinet shelves allow a user to raise and lower overhead shelves when storing and retrieving items',
+      videoName: 'storage_shelf'
+    }],
+    guidelines: [
+      {
+        title: 'User Options',
+        guidelineIndex: 3,
+        description: 'The shelves can be raised and lowered either by holding a button on the kitchen counter, pulling on the handle under the lower shelf, or using a voice command. Their  height when lowered is adjustable using these same inputs.',
+        videoName: 'storage_shelf_options'
+      },
+      {
+        title: 'Form + Function',
+        guidelineIndex: 4,
+        description: 'The shelves blend into the kitchen cabinets and match the aesthetic of the overall space.',
+        videoName: 'storage_shelf_pan'
+      },
+      {
+        title: 'User Independence',
+        guidelineIndex: 8,
+        description: 'A slide-resistant surface and edge rails guard against items falling or moving around while the shelves are transitioning, making the feature safe to use independently by any member of the household.',
+        videoName: 'storage_shelf_independence'
+      },
+      {
+        title: 'Longterm Spectrum of Abilities',
+        guidelineIndex: 9,
+        description: 'When not lowered, the feature functions as a set of standard cabinet shelves, meeting the individual at their level of ability at any point in time.',
+        videoName: 'storage_shelf_pan'
+      }],
     back: 'kitchen'
   },
   stool: {
@@ -149,14 +169,15 @@ const adaptableScenes = {
     title: 'Stowable Kitchen Stool',
     forwardButtons: [],
     features: [{
-      description: 'A height-adjustable, rollable kitchen stool will offers a flexible seating option during food preparation',
+      description: 'A height-adjustable, rollable kitchen stool offers a flexible seating option during food preparation',
       imageName: 'stool'
     }],
     guidelines: [{
       title: 'Body Variance',
       guidelineIndex: 2,
       description: 'The chair is height adjustable from its base and along its back to accommodate different user heights. It provides a supportive rounded back, but does not include enclosing arms, which would limit its use to certain body widths.',
-      videoName: 'stool_bodyvariance'
+      videoName: 'stool_bodyvariance',
+      playbackRate: 1.75
     },
     {
       title: 'User Options',
@@ -166,7 +187,7 @@ const adaptableScenes = {
     },
     {
       title: 'Form + Function',
-      guidelineIndex: 3,
+      guidelineIndex: 4,
       description: 'Unlike other chairs that offer similar adjustable and portable features, this chair matches the aesthetics of a modern kitchen.',
       videoName: 'stool_formfunction'
     },
@@ -174,7 +195,8 @@ const adaptableScenes = {
       title: 'Minimize Discomfort',
       guidelineIndex: 5,
       description: 'In order to ensure users feel safe and in control, the chair allows the user to lock the wheels and lower the seat before transferring on and off the chair.',
-      videoName: 'stool_discomfort'
+      videoName: 'stool_discomfort',
+      playbackRate: 1.5
     },
     {
       title: 'Uplift During Error',
@@ -194,7 +216,7 @@ const adaptableScenes = {
 
 }
 
-const Kitchen = () => {
+const Kitchen = ({ onBackToOverview }) => {
   const [scenes, setScenes] = useState(['kitchen', null])
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [sceneInFocus, setSceneInFocus] = useState(0)
@@ -236,6 +258,7 @@ const Kitchen = () => {
     {scenes[0] && 
       <div className={`adaptable-scene ${sceneInFocus === 1 ? 'invisible' : 'visible'}`}>
         <AdaptableScene 
+          onBackToOverview={onBackToOverview}
           assetData={data} 
           isTransitioning={isTransitioning}
           onTransitionStart={(sceneId) => { 
@@ -258,6 +281,7 @@ const Kitchen = () => {
       {scenes[1] && 
         <div className={`adaptable-scene ${sceneInFocus === 0 ? 'invisible' : 'visible'}`}>
           <AdaptableScene 
+            onBackToOverview={onBackToOverview}
             assetData={data} 
             isTransitioning={isTransitioning}
             onTransitionStart={(sceneId) => { 
