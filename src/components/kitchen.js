@@ -107,7 +107,7 @@ const adaptableScenes = {
       guidelineIndex: 3,
       description: 'Countertop inserts and an interior track system give users options for how they choose to throw items away during prep or cleanup. The bins can be brought forward along this track system with either a push in at the top of the drawer, or by pushing into a kick stand at the bottom.',
       videoName: 'trash_useroptions',
-      playbackRate: 5
+      playbackRate: 1.5
     },
     {
       title: 'Form + Function',
@@ -120,7 +120,7 @@ const adaptableScenes = {
       guidelineIndex: 5,
       description: 'With the cutting board connected above, users can easily relocate the trash bins to wherever they are prepping food. The interior trash bins feature sliding side openings that eliminate the need for users to pull a heavy trash bag all the way up and out of the bin.',
       videoName: 'trash_discomfort',
-      playbackRate: 2
+      playbackRate: 1
     }],
     feedback: [],
     back: 'kitchen'
