@@ -12,7 +12,7 @@ const NavBar = ({ siteTitle, pageName }) => {
     return classNames.join(' ')
   }
 
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [screenWidth, setScreenWidth] = useState(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   const pageTitles = {
@@ -22,6 +22,8 @@ const NavBar = ({ siteTitle, pageName }) => {
   }
 
   useEffect(() => {
+    setScreenWidth(window.innerWidth)
+    
     window.addEventListener('resize', () => {
       setScreenWidth(window.innerWidth)
     })

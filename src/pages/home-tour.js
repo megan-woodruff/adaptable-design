@@ -12,9 +12,11 @@ import { useEffect } from "react/cjs/react.development"
 
 const AdaptableFeatures = () => {
   const [areaSelected, setAreaSelected] = useState(null)
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [screenWidth, setScreenWidth] = useState(null)
 
   useEffect(() => {
+    setScreenWidth(window.innerWidth)
+
     window.addEventListener('resize', () => {
       setScreenWidth(window.innerWidth)
     })
