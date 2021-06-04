@@ -12,7 +12,8 @@ const getTransitionVideoName = ({ sceneId, to }) => {
 }
 
 const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTransitioning, 
-  onBackToOverview, onTransitionComplete, onTransitionStart, forwardButtons, features, feedback = [], guidelines, back }) => {
+  onBackToOverview, onTransitionComplete, onTransitionStart, forwardButtons, features, 
+  feedback = [], guidelines, back, screenWidth }) => {
 
   const image = assetData.images.edges.filter(image => {
     return image.node.name === imageName
@@ -62,6 +63,7 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
       <ClickThroughs 
         onClickBack={onClickBack}
         back={back}
+        screenWidth={screenWidth}
         videoData={assetData.videos}
         imageData={assetData.images}
         features={features} 
@@ -86,16 +88,13 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
 
 }
 
-const ClickThroughs = ({ back, onClickBack, features, guidelines, feedback, videoData, isTransitioning }) => {
+const ClickThroughs = ({ screenWidth, features, guidelines, feedback, videoData, isTransitioning }) => {
   const clickThroughs = [...features, ...guidelines, ...feedback]
   const [clickThroughIndex, setClickThroughIndex] = useState(0)
   const videoRef = useRef(null)
-  const sourceRef = useRef(null)
 
   const currentClickThrough = clickThroughs[clickThroughIndex]
   const currentVideo =  currentClickThrough.videoName ? videoData.edges.filter(video => video.node.name === currentClickThrough.videoName)[0] : null
-  const buttonStyle = { height: 36, paddingBottom: 0, paddingTop: 0, fontSize: 12, marginTop: 4, marginBottom: 4 }
-  const featuresStart = 0
   const guidelinesStart = features.length
   const feedbackStart = features.length + guidelines.length
   
@@ -130,8 +129,6 @@ const ClickThroughs = ({ back, onClickBack, features, guidelines, feedback, vide
       <source 
         key={currentClickThrough.videoName}
         src={currentVideo.node.publicURL} 
-        // ref={sourceRef}
-        // playbackRate={playbackRate}
         type="video/mp4" />
       </video> }
     {!isTransitioning && 
@@ -139,16 +136,16 @@ const ClickThroughs = ({ back, onClickBack, features, guidelines, feedback, vide
       <div className="clickthroughContent" style={{ fontSize: 18, maxWidth: 1000, marginTop: 8 }}>
         {currentClickThrough.guidelineIndex && 
         <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 4 }}>
-          <h3 style={{ marginBottom: 0, border: 'none', fontWeight: 400 }}>
+          <h3 style={{ fontSize: screenWidth < 1100 ? 18 : 22, marginBottom: 0, border: 'none', fontWeight: 400 }}>
             {fullGuideline.title}
           </h3>
-          <a 
+          <button
             tabIndex="0"
             className="guidelineTooltipEntry"
             data-tip
             data-for='guideline'> 
               i
-            </a>
+            </button>
           <ReactTooltip 
             clickable
             delayHide={500}
@@ -160,9 +157,9 @@ const ClickThroughs = ({ back, onClickBack, features, guidelines, feedback, vide
               <p style={{ fontSize: 14 }}>{ fullGuideline.description }</p>
               <a 
                 style={{ fontSize: 14 }} 
-                // onFocus={}
                 tabIndex="0" 
                 href="http://localhost:8001/defining-adaptable-design" 
+                rel="noreferrer"
                 target="_blank">View all design guidelines</a>
           </ReactTooltip>
         </div>}
@@ -171,12 +168,12 @@ const ClickThroughs = ({ back, onClickBack, features, guidelines, feedback, vide
           {clickThroughIndex >= guidelinesStart && clickThroughIndex < feedbackStart ? 
             'Design Guideline' : 'Participant Design Feedback'}
         </p>}
-        <p style={{ fontSize: 18, marginBottom: 12, fontStyle: clickThroughIndex >= feedbackStart ? 'italic' : 'unset' }}>
+        <p style={{ fontSize: screenWidth < 900 ? 14 : 18, marginBottom: 12, fontStyle: clickThroughIndex >= feedbackStart ? 'italic' : 'unset' }}>
           {currentClickThrough.description}
         </p>
       </div>
       <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-      <div style={{  display: 'flex', marginLeft: 20, marginRight: 8, marginTop: 8, marginBottom: 8, alignItems: 'center' }}>
+      <div style={{  display: 'flex', marginLeft: 20, alignItems: 'center' }}>
           <PrimaryButton 
             tabIndex={-1}
             onClick={() => {  setClickThroughIndex(clickThroughIndex - 1) }} 
@@ -194,9 +191,7 @@ const ClickThroughs = ({ back, onClickBack, features, guidelines, feedback, vide
             {` > `}
           </PrimaryButton>
       </div>
-        {/* {clickThroughIndex == clickThroughs.length - 1 && 
-          <button className="smallBackButton" onClick={onClickBack} style={{ marginTop: 4 }}>{`Back to ${back}`}</button>} */}
-      </div>
+     </div>
     </div>}
   </> 
   )
@@ -241,6 +236,8 @@ const ForwardButtonComponent = ({ videoData, sceneId, quote, isTransitioning, co
         </video> 
         <button 
           className="svgButton" 
+          onBlur={() => { setIsHovering(false) }}
+          onFocus={() => { setIsHovering(true) }}
           onMouseLeave={() => { setIsHovering(false) }}
           onMouseEnter={() => { setIsHovering(true) }}
           style={{ top: top, left: left, 'zIndex': 4 }}
@@ -255,7 +252,8 @@ const ForwardButtonComponent = ({ videoData, sceneId, quote, isTransitioning, co
           <div 
             className="quoteFooter" 
             style={{ opacity: isHovering ? 1 : 0 }}>
-            "{quote}"
+            <p>"{quote}"</p>
+            <p style={{ marginBottom: 0, fontSize: 16, fontStyle: 'normal' }}>(Click to view solution)</p>
           </div>}
       </>
     )

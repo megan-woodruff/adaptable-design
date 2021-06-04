@@ -6,7 +6,17 @@
   position: fixed;
   top: 0px;
   display: flex;
+  flex-direction: column;
   width: 100%;
+
+  .mobileNavControl {
+    background-color: $black;
+    border: none;
+    svg {
+      stroke: $white;
+      fill: $white;
+    }
+  }
 
   .navBarContentContainer {
     @extend .contentWrapper;
@@ -14,6 +24,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &.mobile {
+      padding: 16px 0;
+    }
   }
 
     h2 {

@@ -1,7 +1,16 @@
 @import './styles.scss';
 
-$screenWidth: 70vw;
+$screenWidth: 75vw;
+$minScreenWidth: 800px;
 $screenHeight: $screenWidth * .563;
+$minScreenHeight: $minScreenWidth * .563;
+
+.container-dimensions {
+  min-width: $minScreenWidth;
+  min-height: $minScreenHeight;
+  width: $screenWidth;
+  height: $screenHeight;
+}
 
 h1 {
   text-align: center;
@@ -19,9 +28,8 @@ h1 {
 }
 
 .adaptable-container {
+  @extend .container-dimensions;
   position: relative;
-  width: $screenWidth;
-  height: $screenHeight;
   overflow: hidden;
   margin-bottom: 48px;
 } 
@@ -70,18 +78,16 @@ h1 {
  }
 
 .adaptable-image {
+  @extend .container-dimensions;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 3;
-  width: $screenWidth;
-  height: $screenHeight;
   object-fit: contain;
 }
 
 .adaptable-video {
-  width: $screenWidth;
-  height: $screenHeight;
+  @extend .container-dimensions;
   position: absolute;
   top: 0;
   left: 0;
@@ -117,7 +123,9 @@ h1 {
   z-index: 3;
   border-radius: 50%;
   width: $screenWidth * .03;
+  min-width: $minScreenWidth * .03;
   height: $screenWidth * .03;
+  min-height: $minScreenWidth * .03;
   background-color: $contrast;
   opacity: .7;
 
@@ -137,8 +145,7 @@ h1 {
 
 .home-tour {
   position: relative;
-  height: $screenHeight;
-  width: $screenWidth;
+  @extend .container-dimensions;
   margin: 24px auto;
 }
 
@@ -213,8 +220,11 @@ h1 {
 .intro {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin: 24px;
+  margin: 24px auto;
+  padding: 0 32px;
 }
 
 

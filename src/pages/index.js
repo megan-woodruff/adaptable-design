@@ -7,6 +7,7 @@ import Seo from "../components/seo"
 import '../components/index.scss'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import CountUp from "react-countup"
 
 const IndexPage = () => {
 
@@ -59,15 +60,30 @@ const IndexPage = () => {
         <div className="indexSection" style={{ paddingTop: 0 }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', maxWidth: 1100 }}>
           <div className="stat">
-            <p className="stat-header">10,000+</p>
+          <CountUp delay={0} start={8000} duration={1} separator="," end={10000}>
+            {({ countUpRef }) => (
+              <p className="stat-header">
+                <span ref={countUpRef} />+</p>
+            )}
+          </CountUp>
             <p>people in the U.S. turn 65 each day. By 2050, <strong>88 million</strong> will be elderly. </p>
           </div>
           <div className="stat">
-            <p className="stat-header">26%</p>
+            <CountUp delay={0} start={0} duration={1} separator="," end={26}>
+              {({ countUpRef }) => (
+                <p className="stat-header">
+                  <span ref={countUpRef} />%</p>
+              )}
+            </CountUp>
             <p>of adults in america – more than 1 in 4 – are living with a disability</p>
           </div>
           <div className="stat">
-            <p className="stat-header">0.15%</p>
+          <CountUp delay={0} start={0} duration={2} decimals={2} end={0.15}>
+              {({ countUpRef }) => (
+                <p className="stat-header">
+                  <span ref={countUpRef} />%</p>
+              )}
+            </CountUp>
             <p>of U.S. housing units are universally accessible</p>
           </div>
         </div>
@@ -77,7 +93,7 @@ const IndexPage = () => {
             the adaptable house project is working to reshape this narrative
           </h1>
           <p className="subtitle" style={{ maxWidth: 800, margin: '0 auto' }}>
-            Our team worked with sponsor Mary Meyer to conduct human-centered research to identify key challenges among aging individuals with functional limitations and designed potential features for adaptable kitchen and bathroom spaces.
+            Our team conducted human-centered research to identify key challenges among aging individuals with mobility limitations and designed potential features for adaptable kitchens and bathrooms.
           </p>
             <iframe style={{ marginTop: 48, marginBottom: 48, maxWidth: 800, maxHeight: 460, width: '90vw', height: '50.6vw' }} src="https://www.youtube.com/embed/5KTHJqUT2gM" title="Mary Meyer Adaptable House UW Capstone Project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>

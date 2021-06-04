@@ -8,9 +8,21 @@ import '../components/adaptableImage.scss'
 import Kitchen from "../components/kitchen"
 import Bathroom from "../components/bathroom"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { useEffect } from "react/cjs/react.development"
 
 const AdaptableFeatures = () => {
   const [areaSelected, setAreaSelected] = useState(null)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setScreenWidth(window.innerWidth)
+    })
+
+  return () => {
+    window.removeEventListener('resize', () => {})
+  }
+  }, [])
 
   const data = useStaticQuery(graphql`
     {
@@ -52,7 +64,8 @@ const AdaptableFeatures = () => {
     <Seo title="Adaptable Features" />
     <div className="intro">
       <h1>adaptable home tour</h1>
-      <p>explore potential adaptable kitchen and bathroom features developed for the adaptable house project</p>
+      <p>explore an interactive walkthrough of adaptable kitchen and bathroom features designed for the adaptable house project</p>
+      {screenWidth < 900 && <p style={{ fontStyle: 'italic'}}>(This walkthrough is best viewed on a screen that is 800px or wider)</p>}
     </div>
     { areaSelected === null ?
       <div className="areaSelector">
@@ -67,7 +80,9 @@ const AdaptableFeatures = () => {
         </button>
       </div> : 
         areaSelected === 'kitchen' ? 
-          <Kitchen onBackToOverview={() => { setAreaSelected(null) }} />  : 
+          <Kitchen 
+            screenWidth={screenWidth} 
+            onBackToOverview={() => { setAreaSelected(null) }} />  : 
           <Bathroom />}
     
   </Layout>

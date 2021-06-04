@@ -36,7 +36,7 @@ const adaptableScenes = {
         top: '57%',
         left: '56%',
         to: 'trash',
-        quote: 'It\'s difficult for me to empty out the dishwasher because I have to bend over to do it.'
+        quote: 'It\'s difficult for me to [use kitchen appliances] because I have to bend over to use them.'
       },
     ],
     back: null
@@ -83,11 +83,6 @@ const adaptableScenes = {
       videoName: 'cutting_board_multipurpose',
       playbackRate: 2
     }],
-    feedback: [
-    //   {
-    //   description: '"It is versatile - I like the options, it can be this or that depending on what your needs are." -Participant 1'
-    // }
-  ],
     back: 'kitchen'
   },
   trash: {
@@ -216,7 +211,7 @@ const adaptableScenes = {
 
 }
 
-const Kitchen = ({ onBackToOverview }) => {
+const Kitchen = ({ onBackToOverview, screenWidth }) => {
   const [scenes, setScenes] = useState(['kitchen', null])
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [sceneInFocus, setSceneInFocus] = useState(0)
@@ -258,6 +253,7 @@ const Kitchen = ({ onBackToOverview }) => {
     {scenes[0] && 
       <div className={`adaptable-scene ${sceneInFocus === 1 ? 'invisible' : 'visible'}`}>
         <AdaptableScene 
+          screenWidth={screenWidth}
           onBackToOverview={onBackToOverview}
           assetData={data} 
           isTransitioning={isTransitioning}
@@ -281,6 +277,7 @@ const Kitchen = ({ onBackToOverview }) => {
       {scenes[1] && 
         <div className={`adaptable-scene ${sceneInFocus === 0 ? 'invisible' : 'visible'}`}>
           <AdaptableScene 
+            screenWidth={screenWidth}
             onBackToOverview={onBackToOverview}
             assetData={data} 
             isTransitioning={isTransitioning}

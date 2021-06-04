@@ -1,7 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import "./splash.scss"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 
 const Splash = () => {
   return (

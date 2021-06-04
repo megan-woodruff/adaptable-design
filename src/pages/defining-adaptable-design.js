@@ -4,7 +4,7 @@ import '../components/designPrinciples.scss'
 import adaptableDesignGuidelines from "../components/adaptableDesignContent"
 import { Link } from "gatsby"
 
-const DefiningAdaptableDesign = () => (
+const DefiningAdaptableDesign = () =>  (
   <Layout pageName={'defining-adaptable-design'}>
     <div className="page-layout">
       <h1 className="title">what is adaptable design?</h1>
@@ -58,11 +58,11 @@ const DefiningAdaptableDesign = () => (
       </h1>
       <div className="text-wrapper subtitle" style={{ marginBottom: 20, textAlign: 'center' }}>
         <p className="subtitle">
-          Working from this definition, we developed a set of design principles that are central to creating an adaptable design
+          Working from this definition, we developed a set of design principles that we believe are central to creating an adaptable design.
         </p>
         
       </div>
-      <table style={{ maxWidth: 800, margin: '0 auto' }}>
+      <table style={{ maxWidth: 800, margin: '36px auto 12px', borderTop: '1px solid lightgray' }}>
         <tr className="designPrincipleRow">
           <td className="designPrincipleName">Positive self-identity</td>
           <td className="designPrincipleDescription">My home is a space where I can feel secure in my identity, nurture positive relationships with my family and community, and motivate myself to take on physical challenges and activities.</td>
