@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -8,7 +8,6 @@ import '../components/adaptableImage.scss'
 import Kitchen from "../components/kitchen"
 import Bathroom from "../components/bathroom"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { useEffect } from "react/cjs/react.development"
 
 const AdaptableFeatures = () => {
   const [areaSelected, setAreaSelected] = useState(null)
