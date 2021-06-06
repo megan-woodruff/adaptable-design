@@ -9,7 +9,7 @@ const adaptableScenes = {
   bathroom: {
     sceneId: 'bathroom',
     title: 'Bathroom',
-    imageAlt: 'Alt text goes here',
+    imageAlt: 'An aerial view of a bathroom. Above everything, three horizontal slats show the support system for a pulley mobility system. The pulley is attached at the right-front of the room, above a zero-entry bathtub. Above the bathtub are two shower heads. Behind the bathtub are two more shower heads and a reclined shower chair that is on wheels. In the center of the room, a slanted wall houses a sink, toilet, and two shower heads.',
     imageName: 'bathroom_start',
     features: [],
     guidelines: [],
@@ -50,13 +50,13 @@ const adaptableScenes = {
   pulley: {
     sceneId: 'pulley',
     imageName: 'pulley',
-    imageAlt: 'Close up on',
+    imageAlt: 'A close up on a 3D model of a pulley system for mobility support. The mobility component is attached to the ceiling track system, and contains two stirrup-like handles that face one another as well as an attached support swing between them.',
     title: 'Pulley Mobility System',
     features: [
       {
         description: 'A flexible pulley system provides mobility support throughout the bathroom',
         imageName: 'pulley',
-        imageAlt: ''
+        imageAlt: 'A close up on a 3D model of a pulley system for mobility support. The mobility component is attached to the ceiling track system, and contains two stirrup-like handles that face one another as well as an attached support swing between them.'
       }
     ],
     forwardButtons: [],
@@ -65,24 +65,26 @@ const adaptableScenes = {
       guidelineIndex: 8,
       description: "The system provides mobility support around the bath, shower, and toilet so that users can care for themselves independently.",
       videoName: 'pulley_independence',
+      videoAlt: 'The pulley system is shown first over the shower space, and then moved over near the toilet and sink.'
     }, 
     {
       guidelineIndex: 6,
       description: 'The pulley material is sturdy but pliable, so that it won’t hurt if the user bumps into it accidentally',
-      imageName: 'pulley'
+      imageName: 'pulley',
+      imageAlt: 'A close up on a 3D model of a pulley system for mobility support. The mobility component is attached to the ceiling track system, and contains two stirrup-like handles that face one another as well as an attached support swing between them.'
     },
     {
       guidelineIndex: 2,
       description: 'The pulley stirrups and support bar can be set at the body width that is best for the user and can handle a wide range of body weights.',
-      imageName: 'pulley'
+      imageName: 'pulley',
+      imageAlt: 'A close up on a 3D model of a pulley system for mobility support. The mobility component is attached to the ceiling track system, and contains two stirrup-like handles that face one another as well as an attached support swing between them.'
     },
     {
       guidelineIndex: 4,
       description: 'The pulley system can be retracted up into the ceiling and stored out of the way when not in use',
-      videoName: 'pulley_retracted'
-    }
-    
-    ],
+      videoName: 'pulley_retracted',
+      videoAlt: 'The pulley system is shown first at eye level over the shower space, and then moved over near the toilet and sink. Then it is shown moving up closing to the ceiling, leaving the walking space below empty.'
+    }],
     back: 'bathroom'
   },
   tub: {
@@ -101,12 +103,14 @@ const adaptableScenes = {
     guidelines: [{
       guidelineIndex: 3,
       description: 'A reclining seat allows the user to choose a body angle that is most comfortable during their bath.',
-      videoName: 'tub_reclining'
+      videoName: 'tub_reclining',
+      videoAlt: 'A view of the zero-entry bathtub pans slightly to show the reclined wall on one side. The reclined wall shifts angles, to show different seating options.'
     },
     {
       guidelineIndex: 7,
       description: 'A cover can be pulled over the tub when not in use, giving users the option to use the space as a shower instead.',
-      videoName: 'tub_to_cover'
+      videoName: 'tub_to_cover',
+      videoAlt: 'The video shows the zero-entry tub opened, then shows a hard cover completely pulled over the tub, such that someone could use the covered tub as floor space.'
     }],
     feedback: [],
     back: 'bathroom'
@@ -114,28 +118,32 @@ const adaptableScenes = {
   grab_bars: {
     sceneId: 'grab_bars',
     imageName: 'grab_bars',
-    imageAlt: '',
+    imageAlt: 'A close up on a half wall with a sink, toilet, and two shower heads. On either side of the toilet and on the far end of the last shower head, there are large grab bars. The grab bars are installed in the walls and have rounded edges. They vary in height, the tallest one being as high as the shower head.',
     title: 'Multi-functional Grab Bars',
     forwardButtons: [],
     features: [{
       description: 'Grab bars are available throughout the space surrounding the bathtub, toilet, and shower for assistance with entering, exiting and balance.',
-      imageName: 'grab_bars'
+      imageName: 'grab_bars',
+      imageAlt: 'A close up on a half wall with a sink, toilet, and two shower heads. On either side of the toilet and on the far end of the last shower head, there are large grab bars. The grab bars are installed in the walls and have rounded edges. They vary in height, the tallest one being as high as the shower head.'
     }],
     guidelines: [
       {
         guidelineIndex: 3,
         description: 'The grab bars are located in multiple locations along the wall, giving the users options for which side and area of the body they want to use for support.',
-        videoName: 'grab_bars_options'
+        videoName: 'grab_bars_options',
+        videoAlt: 'The close up on the half wall pans to the right and zooms out to show a different angle of the toilet, shower heads, and curved grab bars surrounding them.'
       },
       {
         guidelineIndex: 4,
         description: 'The grab bars can be pulled out for support further away from the half wall, and can also be pushed in when not in use.',
-        videoName: 'grab_bars_pull'
+        videoName: 'grab_bars_pull',
+        videoAlt: 'A close up on the half wall pans to the far right side, to show the tallest grab bar. The grab bar is brought out from the wall (still attached on the ends) to show different options for use.'
       },
       {
         guidelineIndex: 7,
         description: 'Another set of grab bars along the back wall of the bathroom also double as a pull out shower bench.',
         videoName: 'grab_bars_multipurpose',
+        videoAlt: 'A grab bar on the back wall of the bathroom is shown. It can be unlocked and pulled down to be transformed into a shower bench',
         playbackRate: .75
       }],
     back: 'bathroom'
@@ -143,7 +151,7 @@ const adaptableScenes = {
   floor: {
     sceneId: 'floor',
     imageName: 'floor',
-    imageAlt: '',
+    imageAlt: 'A close up on the bathroom floor, which has a light circular pattern on it to indicate that it is rubberized',
     title: 'Rubberized Bathroom Flooring',
     forwardButtons: [],
     features: [],
@@ -151,6 +159,7 @@ const adaptableScenes = {
       guidelineIndex: 5,
       description: 'Rubberized flooring provides support throughout the bathroom, allowing the wet floor space to remain slip-free.',
       imageName: 'floor',
+      imageAlt: 'A close up on the bathroom floor, which has a light circular pattern on it to indicate that it is rubberized and protects against slips',
     },
   ],
     back: 'bathroom'
@@ -158,24 +167,27 @@ const adaptableScenes = {
   shower_chair: {
     sceneId: 'shower_chair',
     imageName: 'shower_chair',
-    imageAlt: 'Close up on a padded chair set low to the ground',
+    imageAlt: 'A close up on a padded, reclined chair set low to the ground. The chair is on wheels and has a side table attached on either side. There is a neck pillow on the chair.',
     title: 'Ergonomic Shower Chair',
     forwardButtons: [],
     features: [{
       description: 'A movable, reclining bathroom chair can be rolled around the bathroom and locked in place as needed',
-      imageName: 'shower_chair'
+      imageName: 'shower_chair',
+      imageAlt: 'A close up on a padded, reclined chair set low to the ground. The chair is on wheels and has a side table attached on either side. There is a neck pillow on the chair.',
     }],
     guidelines: [
       {
         guidelineIndex: 1,
         description: 'The back and side panels on the chair can be adjusted in order to provide a customized, comfortable experience.',
         videoName: 'shower_chair_custom',
+        videoAlt: 'The close up on the chair zooms further and pans to the other side of the chair, to see the bottles of shampoo set on the end table and to show that the reclined back of the chair can be adjusted to various angles',
         playbackRate: .75
       },
       {
         guidelineIndex: 9,
         description: 'If other options require too much energy, the user can use voice or touch to lift the walls and transform the back space into a tub around the chair.',
-        videoName: 'shower_chair_options'
+        videoName: 'shower_chair_options',
+        videoAlt: 'The shower chair is moved back to the corner of the bathroom where it is enclosed by a rectangular mark in the flooring. This rectangular mark is raised to create bathtub walls around the chair.'
       }],
     back: 'bathroom'
   },

@@ -76,12 +76,16 @@ const AdaptableFeatures = () => {
       <div className="areaSelector">
         <button onClick={() => { setAreaSelected('kitchen') }} className="areaButton">
           <GatsbyImage 
+            alt="An aerial shot of kitchen rendered in 3D. There is a back wall which contains a large cabinet with a microwave installed one quarter of the way up, a large double door fridge, high cabinets and counter space below them. In front of this back wall there is a kitchen island which contains sinks on either end, induction stove tops next to each sink, and a cutting board in the middle. There is also a wheelable chair between the back wall and the kitchen island."
+            imgClassName={'areaImage'}
             style={{ marginBottom: 16 }}
             image={getImage(kitchenImg.node)} />
             Kitchen
         </button>
         <button onClick={() => { setAreaSelected('bathroom') }} className="areaButton">
         <GatsbyImage 
+          alt="An aerial view of a bathroom. Above everything, three horizontal slats show the support system for a pulley mobility system. The pulley is attached at the right-front of the room, above a zero-entry bathtub. Above the bathtub are two shower heads. Behind the bathtub are two more shower heads and a reclined shower chair that is on wheels. In the center of the room, a slanted wall houses a sink, toilet, and two shower heads."
+          imgClassName={'areaImage'}
           style={{ marginBottom: 16 }}
           image={getImage(bathroomImg.node)} />
             Bathroom

@@ -54,6 +54,7 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
         videoData={assetData.videos}
         key={forwardButton.to} 
         sceneId={sceneId} 
+        title={title}
         isTransitioning={isTransitioning}
         onTransitionStart={onTransitionStart}
         onTransitionComplete={onTransitionComplete}
@@ -77,6 +78,7 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
     {back && 
       <BackButtonTransition
         back={back}
+        title={title}
         sceneId={sceneId} 
         videoRef={backVideoRef}
         zIndex={backZIndex}
@@ -127,6 +129,7 @@ const ClickThroughs = ({ screenWidth, features, guidelines, feedback, imageData,
       loop
       onCanPlay={() => setPlayBack()}
       ref={videoRef}
+      alt={currentClickThrough.videoAlt}
       className="adaptable-video" 
       style={{ zIndex: 3 }}
       muted>
@@ -139,7 +142,7 @@ const ClickThroughs = ({ screenWidth, features, guidelines, feedback, imageData,
       <GatsbyImage 
         imgClassName="adaptable-image"
         image={getImage(currentImage.node)}
-        alt={'alt'} />}
+        alt={currentClickThrough.imageAlt} />}
     {!isTransitioning && 
     <div className="clickthroughFooter">
       <div className="clickthroughContent" style={{ fontSize: 18, maxWidth: 1000, marginTop: 8 }}>
@@ -206,7 +209,7 @@ const ClickThroughs = ({ screenWidth, features, guidelines, feedback, imageData,
   )
 }
 
-const BackButtonTransition = ({ videoData, videoRef, sceneId, back, onTransitionComplete, zIndex }) => {
+const BackButtonTransition = ({ videoData, videoRef, sceneId, title, back, onTransitionComplete, zIndex }) => {
   const videoName = getTransitionVideoName({ sceneId, to: back })
   const video = videoData.edges.filter(video => video.node.name === videoName)[0]
 
@@ -215,6 +218,7 @@ const BackButtonTransition = ({ videoData, videoRef, sceneId, back, onTransition
         ref={videoRef}
         onEnded={() => { onTransitionComplete(back) }}
         className="adaptable-video" 
+        alt={`The scene transitions from a close up on the ${title} to the original view of the ${back}`}
         style={{ 'zIndex': zIndex }}
         muted>
         <source 
@@ -224,7 +228,7 @@ const BackButtonTransition = ({ videoData, videoRef, sceneId, back, onTransition
   )
 }
 
-const ForwardButtonComponent = ({ videoData, sceneId, quote, isTransitioning, component, to, top, left, onTransitionStart, onTransitionComplete }) => {
+const ForwardButtonComponent = ({ videoData, sceneId, title, quote, isTransitioning, component, to, top, left, onTransitionStart, onTransitionComplete }) => {
   const videoName = getTransitionVideoName({ sceneId, to })
   const video = videoData.edges.filter(video => video.node.name === videoName)[0]
   const videoRef = useRef(null)
@@ -237,6 +241,7 @@ const ForwardButtonComponent = ({ videoData, sceneId, quote, isTransitioning, co
           ref={videoRef}
           onEnded={() => { onTransitionComplete(to) }}
           className="adaptable-video" 
+          alt={`The scene transitions from an aerial view of the ${title} to a close up on the ${to}`}
           style={{ 'zIndex': zIndex }}
           muted>
           <source 
