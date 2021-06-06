@@ -1,6 +1,7 @@
 $primary: #FFFAF2;
 $white: #FFFFFF;
-$black: #000;
+$cream: #FAF1E1;
+$black: #373737;
 
 $contrast: $black;
 $font-family-serif: 'Lora', serif;
@@ -25,9 +26,10 @@ $font-family-sans: 'DM Sans', sans-serif;
   max-width: 600px;
   margin: 0 auto;
   text-align: left;
-  font-size: 20px;
+  font-size: 18px;
+  font-family: $font-family-serif;
   p {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -37,7 +39,7 @@ $font-family-sans: 'DM Sans', sans-serif;
   text-align: left;
   p {
     font-size: 22px;
-    font-weight: 600;
+    // font-weight: 600;
   }
 }
 

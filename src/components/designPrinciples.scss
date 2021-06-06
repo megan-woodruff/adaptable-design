@@ -5,6 +5,7 @@
   line-height: 32px;
   padding: 12px;
   width: 180px;
+  font-family: $font-family-serif;
 
   @media only screen and (max-width: 600px) {
     width: 120px;
@@ -16,6 +17,7 @@
 .designPrincipleDescription {
   font-size: 18px;
   padding: 24px;
+  font-family: $font-family-serif;
 }
 
 .designPrincipleRow {
@@ -23,25 +25,27 @@
 }
 
 .designGuideline {
-  font-size: 52px;
+  font-family: $font-family-serif;
+  font-size: 48px;
   line-height: 24px;
   padding: 20px 0;
   list-style: decimal-leading-zero;
   margin-left: 84px;
 
   .title {
-    transform: translateY(-12px);
-    margin-bottom: 12px;
+    transform: translateY(-20px);
+    margin-bottom: 8px;
     font-size: 20px;
   }
 
   .description {
-    transform: translateY(-12px);
+    transform: translateY(-20px);
     margin-bottom: 0;
   }
 }
 
 .designGuidelinePrincipleTag {
+  font-family: $font-family-serif;
   font-size: 16px;
   padding: 8px 12px;
   border: 1px solid $black;

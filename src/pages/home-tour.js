@@ -60,12 +60,16 @@ const AdaptableFeatures = () => {
     return image.node.name === 'kitchen'
   })[0]
 
+  const bathroomImg = data.images.edges.filter(image => {
+    return image.node.name === 'bathroom'
+  })[0]
+
   return (
   <Layout pageName={'home-tour'}>
     <Seo title="Adaptable Features" />
     <div className="intro">
       <h1>adaptable home tour</h1>
-      <p>explore an interactive walkthrough of adaptable kitchen and bathroom features designed for the adaptable house project</p>
+      <p>explore an interactive walkthrough of adaptable kitchen and bathroom features</p>
       {screenWidth < 900 && <p style={{ fontStyle: 'italic'}}>(This walkthrough is best viewed on a screen that is 800px or wider)</p>}
     </div>
     { areaSelected === null ?
@@ -76,15 +80,21 @@ const AdaptableFeatures = () => {
             image={getImage(kitchenImg.node)} />
             Kitchen
         </button>
-        <button className="areaButton">
-          Bathroom
+        <button onClick={() => { setAreaSelected('bathroom') }} className="areaButton">
+        <GatsbyImage 
+          style={{ marginBottom: 16 }}
+          image={getImage(bathroomImg.node)} />
+            Bathroom
         </button>
       </div> : 
         areaSelected === 'kitchen' ? 
           <Kitchen 
             screenWidth={screenWidth} 
             onBackToOverview={() => { setAreaSelected(null) }} />  : 
-          <Bathroom />}
+          <Bathroom
+            screenWidth={screenWidth} 
+            onBackToOverview={() => { setAreaSelected(null) }}
+          />}
     
   </Layout>
   )

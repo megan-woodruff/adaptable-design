@@ -18,7 +18,7 @@ const DefiningAdaptableDesign = () =>  (
         </p>
       </div>
       <div className="primary-point">
-        <p>It goes beyond “accessible”</p>
+        <p>It goes beyond <b>“accessible”</b></p>
       </div>
       <div className="text-wrapper">
         <p>
@@ -29,7 +29,7 @@ const DefiningAdaptableDesign = () =>  (
         </p>
       </div>
       <div className="primary-point">
-        <p>It is grounded in the functional principles of universal design</p>
+        <p>It is grounded in the functional principles of <b>universal design</b></p>
       </div>
       <div className="text-wrapper">
         <p>
@@ -40,7 +40,7 @@ const DefiningAdaptableDesign = () =>  (
         </p>
       </div>
       <div className="primary-point">
-        <p>It couples an emphasis on the social and psychological aspects of design with the notion that users’ abilities are varied and dynamic.</p>
+        <p>It couples an emphasis on the <b>social and psychological</b> aspects of design with the notion that users’ abilities are <b>varied and dynamic</b>.</p>
       </div>
       <div className="text-wrapper">
         <p>

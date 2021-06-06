@@ -1,7 +1,8 @@
 @import './styles.scss';
 
 .navBar {
-  background: $black;
+  background: $cream;
+  color: $black;
   z-index: 1000;
   position: fixed;
   top: 0px;
@@ -10,11 +11,13 @@
   width: 100%;
 
   .mobileNavControl {
-    background-color: $black;
+    background-color: $cream;
     border: none;
+    cursor: pointer;
+
     svg {
-      stroke: $white;
-      fill: $white;
+      stroke: $black;
+      fill: $black;
     }
   }
 
@@ -41,7 +44,7 @@
 
     .link, .navLink {
       text-decoration: none;
-      color: $primary;
+      color: $black;
       font-family: $font-family-serif;
       font-size: 1.25rem;
       padding: .25rem;

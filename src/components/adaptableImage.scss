@@ -223,7 +223,7 @@ h1 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 24px auto;
+  margin: 24px auto 0;
   padding: 0 32px;
 }
 
@@ -238,9 +238,17 @@ h1 {
 }
 
 .areaButton {
+  font-family: $font-family-serif;
+  background-color: rgba($white, 0);
+  border: 1px solid $black;
+  border-radius: 2px;
   width: 48%;
   cursor: pointer;
   padding: 24px;
   font-size: 24px;
   transition: all .5s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }

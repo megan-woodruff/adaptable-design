@@ -88,13 +88,17 @@ const AdaptableScene = ({ assetData, sceneId, title, imageName, imageAlt, isTran
 
 }
 
-const ClickThroughs = ({ screenWidth, features, guidelines, feedback, videoData, isTransitioning }) => {
+const ClickThroughs = ({ screenWidth, features, guidelines, feedback, imageData, videoData, isTransitioning }) => {
   const clickThroughs = [...features, ...guidelines, ...feedback]
   const [clickThroughIndex, setClickThroughIndex] = useState(0)
   const videoRef = useRef(null)
 
   const currentClickThrough = clickThroughs[clickThroughIndex]
   const currentVideo =  currentClickThrough.videoName ? videoData.edges.filter(video => video.node.name === currentClickThrough.videoName)[0] : null
+  const currentImage = currentClickThrough.imageName ? imageData.edges.filter(image => {
+    return image.node.name === currentClickThrough.imageName
+  })[0] : null
+
   const guidelinesStart = features.length
   const feedbackStart = features.length + guidelines.length
   
@@ -131,6 +135,11 @@ const ClickThroughs = ({ screenWidth, features, guidelines, feedback, videoData,
         src={currentVideo.node.publicURL} 
         type="video/mp4" />
       </video> }
+    {currentImage &&
+      <GatsbyImage 
+        imgClassName="adaptable-image"
+        image={getImage(currentImage.node)}
+        alt={'alt'} />}
     {!isTransitioning && 
     <div className="clickthroughFooter">
       <div className="clickthroughContent" style={{ fontSize: 18, maxWidth: 1000, marginTop: 8 }}>
@@ -168,7 +177,7 @@ const ClickThroughs = ({ screenWidth, features, guidelines, feedback, videoData,
           {clickThroughIndex >= guidelinesStart && clickThroughIndex < feedbackStart ? 
             'Design Guideline' : 'Participant Design Feedback'}
         </p>}
-        <p style={{ fontSize: screenWidth < 900 ? 14 : 18, marginBottom: 12, fontStyle: clickThroughIndex >= feedbackStart ? 'italic' : 'unset' }}>
+        <p style={{ fontSize: screenWidth < 900 ? 14 : 16, marginBottom: 12, fontStyle: clickThroughIndex >= feedbackStart ? 'italic' : 'unset' }}>
           {currentClickThrough.description}
         </p>
       </div>
@@ -252,8 +261,8 @@ const ForwardButtonComponent = ({ videoData, sceneId, quote, isTransitioning, co
           <div 
             className="quoteFooter" 
             style={{ opacity: isHovering ? 1 : 0 }}>
-            <p>"{quote}"</p>
-            <p style={{ marginBottom: 0, fontSize: 16, fontStyle: 'normal' }}>(Click to view solution)</p>
+            <p style={{ marginBottom: 4 }}>"{quote}"</p>
+            <p style={{ marginBottom: 0, fontSize: 16, fontStyle: 'normal' }}>[Click to view feature]</p>
           </div>}
       </>
     )
