@@ -80,13 +80,12 @@ const AdaptableFeatures = () => {
             image={getImage(kitchenImg.node)} />
             Kitchen
         </button>
-        {bathroomImg && 
         <button onClick={() => { setAreaSelected('bathroom') }} className="areaButton">
         <GatsbyImage 
           style={{ marginBottom: 16 }}
           image={getImage(bathroomImg.node)} />
             Bathroom
-        </button>}
+        </button>
       </div> : 
         areaSelected === 'kitchen' ? 
           <Kitchen 
