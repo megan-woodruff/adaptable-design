@@ -10,7 +10,7 @@ const adaptableScenes = {
     sceneId: 'bathroom',
     title: 'Bathroom',
     imageAlt: 'Alt text goes here',
-    imageName: 'bathroom',
+    imageName: 'bathroom_start',
     features: [],
     guidelines: [],
     forwardButtons: [

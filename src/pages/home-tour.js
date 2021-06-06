@@ -61,7 +61,7 @@ const AdaptableFeatures = () => {
   })[0]
 
   const bathroomImg = data.images.edges.filter(image => {
-    return image.node.name === 'bathroom'
+    return image.node.name === 'bathroom_start'
   })[0]
 
   return (
