@@ -37,20 +37,32 @@
 }
 
 .adaptableDesignList {
+  max-width: 600px;
+  counter-reset: item;
+  list-style-type: none;
+
   li {
     font-family: $font-family-serif;
-    font-size: 52px;
-    line-height: 20px;
+    font-size: 40px;
+    line-height: 24px;
     padding: 20px 0;
-    list-style: decimal-leading-zero;
-    margin-left: 84px;
+    margin-bottom: 12px;
+    font-weight: 600;
   }
 
-  li span {
+  li:before { 
+    content: "0" counter(item) "  "; 
+    counter-increment: item 
+}
+
+  li p {
+      font-weight: normal;
       font-family: $font-family-serif;
-      transform: translateY(-50%);
+      transform: translateY(-30px);
       font-size: 20px;
-      line-height: 20px;
+      line-height: 24px;
+      margin-bottom: 0;
+      margin-left: 72px;
   }
 }
 

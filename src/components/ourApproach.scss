@@ -32,7 +32,7 @@
         font-family: $font-family-serif;
         transform: translateY(-30px);
         font-size: 20px;
-        line-height: 20px;
+        line-height: 24px;
         margin-bottom: 0;
         margin-left: 60px;
 
@@ -50,9 +50,9 @@
 
 .twoColumnHeader {
   font-family: $font-family-serif;
-  font-size: 40px;
-  font-weight: 600;
-  margin-right: 28px;
+  font-size: 32px;
+  font-weight: medium;
+  margin-right: 32px;
 }
 
 .secondaryHeader {
@@ -124,7 +124,7 @@
 
 .hiFiName {
   text-align: center;
-  margin-top: -12px;
+  margin-top: -8px;
 }
 
 .hiFiConceptSketch {
@@ -161,12 +161,12 @@
 }
 
 .teamMember {
-  width: 140px;
+  width: 160px;
   margin: 0 24px;
 }
 
 .memberName {
-  width: 140px;
+  width: 160px;
   margin-bottom: 0;
   font-family: $font-family-serif;
 }
@@ -200,7 +200,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 40px;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .acknowledgement {
@@ -209,6 +209,7 @@
 
   @media only screen and (min-width: 680px) {
     width: 33.3%;
+    padding: 24px;
   }
 }
 
@@ -241,7 +242,7 @@
   @extend .svgIcon;
   @media only screen and (min-width: 680px) {
     top: -140px;
-    right: -80px;
+    right: -100px;
     width: 140px;
   }
 }

@@ -70,6 +70,11 @@ const AdaptableFeatures = () => {
     <div className="intro">
       <h1>adaptable home tour</h1>
       <p>explore an interactive walkthrough of adaptable kitchen and bathroom features</p>
+      <div className="instructions">
+        <div className="instruction"><p className="count">1</p><p>select a space</p></div>
+        <div className="instruction"><p className="count">2</p><p>hover over dark circles to hear from research participants</p></div>
+        <div className="instruction"><p className="count">3</p><p>click dark circles to explore the feature</p></div>
+      </div>
       {screenWidth < 900 && <p style={{ fontStyle: 'italic'}}>(This walkthrough is best viewed on a screen that is 800px or wider)</p>}
     </div>
     { areaSelected === null ?

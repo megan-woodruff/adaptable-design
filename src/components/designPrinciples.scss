@@ -24,24 +24,38 @@
   padding: 24px;
 }
 
-.designGuideline {
-  font-family: $font-family-serif;
-  font-size: 48px;
-  line-height: 24px;
-  padding: 20px 0;
-  list-style: decimal-leading-zero;
-  margin-left: 84px;
+.designGuidelines {
+  max-width: 600px;
 
-  .title {
-    transform: translateY(-20px);
+  counter-reset: item;
+  list-style-type: none;
+
+  li {
+    max-width: 600px;
+    font-family: $font-family-serif;
+    font-size: 40px;
+    line-height: 24px;
+    padding: 20px 0;
     margin-bottom: 8px;
-    font-size: 20px;
+    font-weight: medium;
   }
 
-  .description {
-    transform: translateY(-20px);
+  li:before { 
+    content: "0" counter(item) "  "; 
+    counter-increment: item 
+}
+
+  li p {
+    font-weight: normal;
+    font-family: $font-family-serif;
+    transform: translateY(-30px);
+    font-size: 20px;
+    line-height: 24px;
     margin-bottom: 0;
+    margin-left: 72px;
   }
+  
+
 }
 
 .designGuidelinePrincipleTag {
@@ -55,6 +69,8 @@
 }
 
 .principleTags {
+  transform: translateY(-12px);
+  margin-left: 72px;
   display: flex;
   flex-wrap: wrap;
   align-items: start;

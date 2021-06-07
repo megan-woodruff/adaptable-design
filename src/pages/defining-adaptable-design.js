@@ -3,9 +3,11 @@ import Layout from "../components/layout"
 import '../components/designPrinciples.scss'
 import adaptableDesignGuidelines from "../components/adaptableDesignContent"
 import { Link } from "gatsby"
+import Seo from "../components/seo"
 
 const DefiningAdaptableDesign = () =>  (
   <Layout pageName={'defining-adaptable-design'}>
+    <Seo title="What is adaptable design?" />
     <div className="page-layout">
       <h1 className="title">what is adaptable design?</h1>
       <div className="text-wrapper">
@@ -84,7 +86,7 @@ const DefiningAdaptableDesign = () =>  (
           <td className="designPrincipleDescription">The features in my home are easy to use, offer options for operation, and adapt to my functional needs over time.</td>
         </tr>
       </table>
-      <h1 className="title mt-5" style={{ marginTop: 100, marginBottom: 20 }}>
+      <h1 id="guidelines" className="title mt-5" style={{ marginTop: 100, marginBottom: 20 }}>
         adaptable design guidelines
       </h1>
       <div className="text-wrapper subtitle" style={{ marginBottom: 20, textAlign: 'center' }}>
@@ -93,7 +95,7 @@ const DefiningAdaptableDesign = () =>  (
         </p>
         
       </div>
-      <ol style={{ maxWidth: 600, margin: '64px auto 64px' }}>
+      <ol className="designGuidelines" style={{ maxWidth: 600, margin: '64px auto 64px' }}>
         {adaptableDesignGuidelines.map(guideline => (
           <li className="designGuideline">
             <p className="title" style={{ fontWeight: 600 }}>{guideline.title}</p>

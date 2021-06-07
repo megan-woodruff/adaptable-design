@@ -6,6 +6,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import ArrowLeftSvg from '../components/arrowLeftSvg'
 import ArrowRightSvg from '../components/arrowRightSvg'
 import LightBulbSvg from '../components/lightbulbSvg'
+import Seo from "../components/seo"
 
 const OurApproach = () => { 
   
@@ -178,9 +179,11 @@ const OurApproach = () => {
 
   return (
   <Layout pageName={'our-approach'}>
+    <Seo title="Our Approach" />
     <div className="page-layout">
-      <h1 className="title">our approach & process</h1>
-      <div style={{ display: 'flex', maxWidth: 800, margin: '0 auto' }}>
+      <div style={{ textAlign: 'left', maxWidth: 800, margin: '0 auto', padding: 16 }}>
+      <h1 className="title" style={{ textAlign: 'left' }}>our approach & process</h1>
+      <div style={{ display: 'flex',}}>
         <ol className="twoColumns">
           <li><p>conduct secondary  research</p></li>
           <li><p>conduct co-design research sessions with target users</p></li>
@@ -188,6 +191,7 @@ const OurApproach = () => {
           <li><p>define a set of principles and guidelines for applying adaptable design to the home space</p></li>
           <li><p>iterate on sketches + prototype high-fidelity 3D feature renderings</p></li>
         </ol>
+      </div>
       </div>
       <div className="twoColumnText">
       <div style={{ flexShrink: 0, position: 'relative' }}>
@@ -197,8 +201,8 @@ const OurApproach = () => {
         <ArrowRightSvg className="arrowRightDesignQuestions" />
       </div>
       <div>
-        <p style={{ marginTop: 10 }}>
-          how might we design home features that <i>accomodate progressive changes in function to disabilities and aging?</i>
+        <p style={{ marginTop: 4 }}>
+          how might we design home features that <i>accommodate progressive changes in function to disabilities and aging?</i>
         </p>
         <p>
           how might we design home features such that they also promote <i>positive psychological and social health</i> for their users?
@@ -492,7 +496,7 @@ const OurApproach = () => {
           If you want to learn more about how this work is continued for The Adaptable House Project, visit <a href="https://www.theadaptablehouseproject.com" rel="noreferrer" target="_blank">theadaptablehouseproject.com</a>
         </p>
       </div>
-      <div className="conceptSketches" style={{ marginBottom: 80 }}>
+      <div className="conceptSketches" style={{ marginBottom: 80, maxWidth: 700 }}>
         <h3 className="secondaryHeader">
         acknowledgements
         </h3>
@@ -502,15 +506,18 @@ const OurApproach = () => {
         <div className="acknowledgements">
         <div className="acknowledgement">
           <p style={{ marginBottom: 0 }}>Stan Chiu</p>
-          <p>Project Advisor</p>
+          <p style={{ marginBottom: 4 }}>Project Advisor</p>
+          <p style={{ fontSize: 14 }}>Gensler Architecture</p>
         </div>
         <div className="acknowledgement">
           <p style={{ marginBottom: 0 }}>Mary Meyer</p>
-          <p>Project Sponsor</p>
+          <p style={{ marginBottom: 4 }}>Project Sponsor</p>
+          <p style={{ fontSize: 14 }}>The Adaptable House Project</p>
         </div>
         <div className="acknowledgement">
           <p style={{ marginBottom: 0 }}>Ruth Kikin-Gil</p>
-          <p>UW Capstone Advisor</p>
+          <p style={{ marginBottom: 4 }}>Capstone Advisor</p>
+          <p style={{ fontSize: 14 }}>University of Washington</p>
         </div>
         </div>
       </div>

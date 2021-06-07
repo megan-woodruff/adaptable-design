@@ -110,14 +110,14 @@ const IndexPage = () => {
           <h1 style={{ maxWidth: 800 }}>
             what is adaptable design?
           </h1>
-          <p className="subtitle" style={{ maxWidth: 800, margin: '0 auto', padding: 12 }}>
+          <p className="subtitle" style={{ maxWidth: 600, margin: '0 auto', padding: 12 }}>
             we used our research to define this approach to design and outlined principles and guidelines for broader use
           </p>
           <div className="adaptableDesignPoints">
             <ol className="adaptableDesignList" style={{ textAlign: 'left' }}>
-              <li><span>It goes beyond <b>“accessible”</b></span></li>
-              <li><span>It is grounded in the functional principles of <b>universal design</b></span></li>
-              <li><span>It couples an emphasis on the <b>social and psychological</b> aspects of design with the notion that users’ abilities are <b>varied and dynamic</b></span></li>
+              <li><p>It goes beyond <b>“accessible”</b></p></li>
+              <li><p>It is grounded in the functional principles of <b>universal design</b></p></li>
+              <li><p>It couples an emphasis on the <b>social and psychological</b> aspects of design with the notion that users’ abilities are <b>varied and dynamic</b></p></li>
             </ol>
           </div>
           <Link 

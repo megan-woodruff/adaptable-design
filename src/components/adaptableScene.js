@@ -170,7 +170,7 @@ const ClickThroughs = ({ screenWidth, features, guidelines, feedback, imageData,
               <a 
                 style={{ fontSize: 14 }} 
                 tabIndex="0" 
-                href="https://adaptablehome.design/defining-adaptable-design" 
+                href="https://adaptablehome.design/defining-adaptable-design/#guidelines" 
                 rel="noreferrer"
                 target="_blank">View all design guidelines</a>
           </ReactTooltip>
@@ -267,7 +267,6 @@ const ForwardButtonComponent = ({ videoData, sceneId, title, quote, isTransition
             className="quoteFooter" 
             style={{ opacity: isHovering ? 1 : 0 }}>
             <p style={{ marginBottom: 4 }}>"{quote}"</p>
-            <p style={{ marginBottom: 0, fontSize: 16, fontStyle: 'normal' }}>[Click to view feature]</p>
           </div>}
       </>
     )
