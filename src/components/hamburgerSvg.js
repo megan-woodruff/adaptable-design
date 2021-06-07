@@ -12,7 +12,7 @@ function Hamburger(props) {
     >
       <path
         d="M1 1h28M1 12h28M1 23h28"
-        stroke="#fff"
+        stroke="#000"
         strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"

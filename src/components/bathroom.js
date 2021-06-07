@@ -10,7 +10,7 @@ const adaptableScenes = {
     sceneId: 'bathroom',
     title: 'Bathroom',
     imageAlt: 'An aerial view of a bathroom. Above everything, three horizontal slats show the support system for a pulley mobility system. The pulley is attached at the right-front of the room, above a zero-entry bathtub. Above the bathtub are two shower heads. Behind the bathtub are two more shower heads and a reclined shower chair that is on wheels. In the center of the room, a slanted wall houses a sink, toilet, and two shower heads.',
-    imageName: 'bathroom_start',
+    imageName: 'bathroom',
     features: [],
     guidelines: [],
     forwardButtons: [

@@ -1,0 +1,247 @@
+@import './styles.scss';
+
+.twoColumns {
+  @media only screen and (min-width: 680px) {
+    column-count: 2;
+    column-gap: 60px;
+    -moz-column-count: 2;
+    -moz-column-gap: 40px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 40px;
+  }
+
+    counter-reset: item;
+    list-style-type: none;
+
+    li {
+      font-family: $font-family-serif;
+      font-size: 36px;
+      line-height: 28px;
+      padding: 0 0;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    li:before { 
+      content: "0" counter(item) "  "; 
+      counter-increment: item 
+  }
+  
+    li p {
+      font-weight: normal;
+        font-family: $font-family-serif;
+        transform: translateY(-30px);
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-left: 60px;
+
+    }
+}
+
+.twoColumnText {
+  @media only screen and (min-width: 680px) {
+    display: flex;
+  }
+  max-width: 700px;
+  padding: 16px;
+  margin: 32px auto 0;
+}
+
+.twoColumnHeader {
+  font-family: $font-family-serif;
+  font-size: 40px;
+  font-weight: 600;
+  margin-right: 28px;
+}
+
+.secondaryHeader {
+  margin-top: 32px;
+  margin-bottom: 8px;
+  font-size: 32px;
+  font-family: $font-family-serif;
+}
+
+.targetUsers {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.conceptSketches {
+  max-width: 640px;
+  padding: 16px;
+  text-align: center;
+  margin: 80px auto 0;
+}
+
+.link {
+  font-family: $font-family-serif;
+}
+
+.principleDevelopment {
+  max-width: 500px;
+  padding: 16px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 800px) {
+    margin-left: 50%;
+  }
+}
+
+.conceptSketchImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+
+.conceptSketch {
+  width: 95vw;
+  height: 58vw;
+  margin-bottom: 3vw;
+
+  @media screen and (min-width: 600px) {
+    width: 46vw;
+    height: 32vw;
+    margin-bottom: 1vw;
+  }
+
+  @media screen and (min-width: 900px) {
+    width: 31vw;
+    height: 22vw;
+    margin-bottom: 1.5vw;
+  }
+
+  overflow: hidden;
+
+  .conceptSketchImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+.hiFiName {
+  text-align: center;
+  margin-top: -12px;
+}
+
+.hiFiConceptSketch {
+  @extend .conceptSketch;
+
+  width: 80vw;
+  height: 50vw;
+  margin-bottom: 3vw;
+
+  @media screen and (min-width: 700px) {
+    width: 40vw;
+    height: 25vw;
+    margin: 0 .5vw 1.5vw;
+  }
+
+  .hiFiConceptSketchImg {
+    @extend .conceptSketchImg;
+  }
+}
+
+.team-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-image {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  object-position: center;
+  margin: 12px;
+}
+
+.teamMember {
+  width: 140px;
+  margin: 0 24px;
+}
+
+.memberName {
+  width: 140px;
+  margin-bottom: 0;
+  font-family: $font-family-serif;
+}
+
+.resources {
+  max-width: 800px;
+  margin: 80px auto 60px;
+
+  a {
+    font-family: $font-family-serif;
+    text-decoration: underline;
+  }
+
+  .resourceList {
+    @media only screen and (min-width: 680px)  {
+      padding-left: 48px;
+    }
+   
+    margin: 32px 0 48px;
+
+    a {
+      font-family: $font-family-serif;
+      text-decoration: underline;
+      font-size: 24px;
+    }
+  }
+  
+}
+
+.acknowledgements {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  max-width: 600px;
+}
+
+.acknowledgement {
+  text-align: center;
+  width: 100%;
+
+  @media only screen and (min-width: 680px) {
+    width: 33.3%;
+  }
+}
+
+.svgIcon {
+  display: none;
+
+  @media only screen and (min-width: 680px) {
+    display: block;
+    position: absolute;
+  }
+}
+
+.arrowRightDesignQuestions {
+  @extend .svgIcon;
+  @media only screen and (min-width: 680px) {
+    top: 180px;
+    left: -40px;
+  }
+}
+
+.arrowRightPrinciples {
+  @extend .svgIcon;
+  @media only screen and (min-width: 680px) {
+    top: 0;
+    right: 60%;
+  }
+}
+
+.arrowLeftSketches {
+  @extend .svgIcon;
+  @media only screen and (min-width: 680px) {
+    top: -140px;
+    right: -80px;
+    width: 140px;
+  }
+}

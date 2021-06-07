@@ -170,7 +170,7 @@ const ClickThroughs = ({ screenWidth, features, guidelines, feedback, imageData,
               <a 
                 style={{ fontSize: 14 }} 
                 tabIndex="0" 
-                href="http://localhost:8001/defining-adaptable-design" 
+                href="https://adaptablehome.design/defining-adaptable-design" 
                 rel="noreferrer"
                 target="_blank">View all design guidelines</a>
           </ReactTooltip>

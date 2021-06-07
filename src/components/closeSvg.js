@@ -12,7 +12,7 @@ function CloseSvg(props) {
   >
     <path
       d="M1.5 2l42 42M43.5 2l-42 42"
-      stroke="white"
+      stroke="black"
       strokeWidth={4}
       strokeLinecap="round"
       strokeLinejoin="round"

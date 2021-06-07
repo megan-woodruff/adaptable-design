@@ -94,7 +94,7 @@ const adaptableScenes = {
   trash: {
     sceneId: 'trash',
     imageName: 'trash',
-    imageAlt: 'Close up on rollable island with trash bins installed in the side',
+    imageAlt: 'Close up on rollable island with trash bins installed on the side and a pull out cutting board above.',
     title: 'Minimal-Lift Trash Bins',
     features: [
       {
@@ -133,7 +133,7 @@ const adaptableScenes = {
   storage_shelf: {
     sceneId: 'storage_shelf',
     imageName: 'storage_shelf',
-    imageAlt: 'Close up on storage cabinet',
+    imageAlt: 'A close up on storage cabinet',
     title: 'Retractable Overhead Storage',
     forwardButtons: [],
     features: [{
