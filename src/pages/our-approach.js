@@ -5,7 +5,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import ArrowLeftSvg from '../components/arrowLeftSvg'
 import ArrowRightSvg from '../components/arrowRightSvg'
-import LightBulbSvg from '../components/lightBulbSvg'
+import LightBulbSvg from '../components/lightbulbSvg'
 
 const OurApproach = () => { 
   
