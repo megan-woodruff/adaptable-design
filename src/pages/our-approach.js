@@ -392,7 +392,7 @@ const OurApproach = () => {
           <GatsbyImage 
             className="hiFiConceptSketch"
             imgClassName="hiFiConceptSketchImg"
-            atl="A close up on a padded, reclined chair set low to the ground. The chair is on wheels and has a side table attached on either side. There is a neck pillow on the chair."
+            alt="A close up on a padded, reclined chair set low to the ground. The chair is on wheels and has a side table attached on either side. There is a neck pillow on the chair."
             image={getImage(data.hifichair)}
           />
           <p className="hiFiName">Ergonomic shower chair</p>
